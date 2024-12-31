@@ -5,26 +5,36 @@ import { UserLayout } from "../layouts/UserLayout";
 // import { RegisterNow } from "../pages/root/RegisterNow";
 // import { SplashScreen } from "./../pages/root/SplashScreen";
 // import { Login } from "../pages/root/Login";
-
+import { FillProfile } from "../pages/root/FillProfile";
+import { CongratulationsPage } from "../pages/root/CongratulationPage";
+//import { CongratulationPage } from "../pages/root/CongratulationPage";
 export const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage />,
     element: <RootLayout />,
     children: [
-    //   {
-    //     path: "",
-    //     // path: "splashscreen",
-    //     element: <SplashScreen />,
-    //   },
-    //   {
-    //     path: "register",
-    //     element: <RegisterNow />,
-    //   },
-    //   {
-    //     path: "login",
-    //     element: <Login />,
-    //   },
+      //   {
+      //     path: "",
+      //     // path: "splashscreen",
+      //     element: <SplashScreen />,
+      //   },
+      //   {
+      //     path: "register",
+      //     element: <RegisterNow />,
+      //   },
+      //   {
+      //     path: "login",
+      //     element: <Login />,
+      //   },
+      {
+        path: "fillprofile",
+        element: <FillProfile />,
+      },
+      {
+        path: "congratulationpage",
+        element: <CongratulationsPage />,
+      },
     ],
   },
   {
