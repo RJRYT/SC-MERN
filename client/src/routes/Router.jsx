@@ -17,6 +17,9 @@ export const router = createBrowserRouter([
          // path: "splashscreen",
          element: <SplashScreen />,
        },
+      
+      
+
     //   {
     //     path: "register",
     //     element: <RegisterNow />,

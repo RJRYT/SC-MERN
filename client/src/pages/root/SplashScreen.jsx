@@ -10,7 +10,7 @@ export const SplashScreen = () => {
         <img
           src="/vite.svg"
           alt="Splash"
-          className="w-32 h-32 mx-auto"
+          className="w-32 h-32 mx-auto mb-8"
         />
 
         {/* Buttons */}
