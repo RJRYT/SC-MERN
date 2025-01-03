@@ -12,7 +12,7 @@ const Terms = () => {
           TERMS & CONDITIONS
         </h6>
       </div>
-      <div className="flex-grow p-6 pt-8 md:px-24"> {/* Added left and right padding for desktop */}
+      <div className="flex-grow p-6 pt-8 md:px-24"> 
         <div className="space-y-4 md:space-y-0 sm:mt-24 md:mt-0"> 
           <h6 className="mb-4 text-xxs md:text-lg font-semibold text-indigo-900 md:text-left">Condition & Attending</h6>
           <p className="text-xxs md:text-base md:text-left lg:mb-8 sm:pb-4 text-gray-700">
