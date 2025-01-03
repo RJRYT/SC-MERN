@@ -12,11 +12,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <RootLayout />,
     children: [
-      {
-         path: "",
-         // path: "splashscreen",
-         element: <SplashScreen />,
-       },
+     
       
       
 
@@ -33,5 +29,10 @@ export const router = createBrowserRouter([
   {
     path: "user",
     element: <UserLayout />,
+  },
+  {
+    path: "/splashscreen",
+    // path: "splashscreen",
+    element: <SplashScreen />,
   },
 ]);
