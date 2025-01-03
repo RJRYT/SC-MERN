@@ -2,7 +2,10 @@ import { Button } from "@material-tailwind/react";
 import { FiPhoneCall } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { Typography } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 export const SplashScreen = () => {
+  
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#1d1f2a]">
       <div className="text-center space-y-6">
@@ -39,7 +42,10 @@ export const SplashScreen = () => {
 
         {/* Footer Text */}
         <p className="text-white font-titillium font-bold">
-          Don't have an account ? Sign Up
+          Don't have an account?{" "}
+          <Link to="/register" className="underline">
+    Sign Up
+  </Link>
         </p>
       </div>
     </div>
