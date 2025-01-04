@@ -8,32 +8,23 @@ import { RegisterNow } from "../pages/root/RegisterNow";
 
 export const router = createBrowserRouter([
   {
+    index: true,
+    path: "",
+    element: <SplashScreen />,
+  },
+  {
     path: "/",
     errorElement: <ErrorPage />,
     element: <RootLayout />,
     children: [
-     
-      
-      
-
-      
-      // {
-      //    path: "login",
-      //    element: <Login />,
-      //  },
+      {
+        path: "user",
+        element: <UserLayout />,
+      },
+      {
+        path: "register",
+        element: <RegisterNow />,
+      }
     ],
   },
-  {
-    path: "user",
-    element: <UserLayout />,
-  },
-  {
-    path: "/splashscreen",
-    // path: "splashscreen",
-    element: <SplashScreen />,
-  },
-  {
-    path: "/register",
-    element: <RegisterNow />,
- },
 ]);

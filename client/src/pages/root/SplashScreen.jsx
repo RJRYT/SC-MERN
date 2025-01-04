@@ -4,17 +4,14 @@ import { FcGoogle } from "react-icons/fc";
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/images/illustrationLogo.png";
 export const SplashScreen = () => {
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#1d1f2a]">
       <div className="text-center space-y-6">
         {/* Image */}
-        <img
-          src="/vite.svg"
-          alt="Splash"
-          className="w-32 h-32 mx-auto mb-8"
-        />
+        <img src={Logo} alt="Splash" className="w-80 h-80 mx-auto mb-8" />
 
         {/* Buttons */}
         <div className="space-y-4 max-w-sm mx-auto">
@@ -27,7 +24,9 @@ export const SplashScreen = () => {
             <div className="bg-black rounded-full w-8 h-8 flex items-center justify-center">
               <FiPhoneCall className="text-white" />
             </div>
-            <Typography className="font-titillium  font-bold"> Login with Email/Phone</Typography> 
+            <Typography className="font-titillium  font-bold">
+              Login with Email/Phone
+            </Typography>
           </Button>
           <Button
             size="sm"
@@ -36,7 +35,9 @@ export const SplashScreen = () => {
             className="flex items-center gap-3 bg-[#34353f] rounded-full text-white w-full normal-case"
           >
             <FcGoogle className="w-7 h-7" />
-           <Typography className="font-titillium  font-bold">Login with Google</Typography> 
+            <Typography className="font-titillium  font-bold">
+              Login with Google
+            </Typography>
           </Button>
         </div>
 
@@ -44,8 +45,8 @@ export const SplashScreen = () => {
         <p className="text-white font-titillium font-bold">
           Don't have an account?{" "}
           <Link to="/register" className="underline">
-    Sign Up
-  </Link>
+            Sign Up
+          </Link>
         </p>
       </div>
     </div>
