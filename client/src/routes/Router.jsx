@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import { ErrorPage } from "../pages/errorPage/ErrorPage";
 import { RootLayout } from "../layouts/RootLayout";
 import { UserLayout } from "../layouts/UserLayout";
-// import { RegisterNow } from "../pages/root/RegisterNow";
-// import { SplashScreen } from "./../pages/root/SplashScreen";
+import { RegisterNow } from "../pages/root/RegisterNow";
+ import { SplashScreen } from "./../pages/root/SplashScreen";
 // import { Login } from "../pages/root/Login";
 
 export const router = createBrowserRouter([
@@ -12,23 +12,28 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <RootLayout />,
     children: [
-    //   {
-    //     path: "",
-    //     // path: "splashscreen",
-    //     element: <SplashScreen />,
-    //   },
-    //   {
-    //     path: "register",
-    //     element: <RegisterNow />,
-    //   },
-    //   {
-    //     path: "login",
-    //     element: <Login />,
-    //   },
+     
+      
+      
+
+      
+      // {
+      //    path: "login",
+      //    element: <Login />,
+      //  },
     ],
   },
   {
     path: "user",
     element: <UserLayout />,
   },
+  {
+    path: "/splashscreen",
+    // path: "splashscreen",
+    element: <SplashScreen />,
+  },
+  {
+    path: "/register",
+    element: <RegisterNow />,
+ },
 ]);
