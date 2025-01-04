@@ -59,8 +59,9 @@ export const OtpVerification = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      
       {/* Header Section */}
-      <div className="flex items-center w-full bg-black h-[60px] px-4">
+      <div className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4">
         <CiCircleChevLeft size={30} color="white" className="mr-4" />
         <h3 className="text-white text-[24px] font-semibold">
           OTP VERIFICATION
@@ -70,6 +71,7 @@ export const OtpVerification = () => {
       {/* OTP Content Section */}
       <div className="flex justify-center items-center flex-grow px-4 sm:px-0 mx-auto max-w-full md:max-w-md">
         <div className="w-full p-8 bg-white rounded-lg shadow-xl overflow-hidden sm:shadow-none sm:bg-none">
+
           {/* Code Sent Message */}
           <p className="text-center mb-8">
             Code has been sent to <span>(+91) ***_***_*542</span>
@@ -86,7 +88,7 @@ export const OtpVerification = () => {
                 value={digit}
                 onChange={(e) => handleChange(e, index)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
-                className="bg-gray-700 w-14 h-14 sm:w-16 sm:h-16 text-center text-2xl font-semibold border border-gray-300 rounded-lg 
+                className="bg-[#736A68] w-14 h-14 sm:w-16 sm:h-16 text-center text-2xl font-semibold border border-gray-300 rounded-lg 
                   focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
               />
             ))}
@@ -103,7 +105,7 @@ export const OtpVerification = () => {
           <div className="flex justify-center mb-6">
             <button
               onClick={(e) => handleSubmitButton(e)}
-              className="flex items-center justify-between w-full max-w-md text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 
+              className="flex items-center justify-between w-full max-w-md text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
                focus:ring-gray-400 font-medium rounded-full text-base px-5 py-3 transition duration-300"
             >
               <span className="flex-grow text-center">Verify</span>
