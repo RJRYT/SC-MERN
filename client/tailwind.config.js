@@ -5,7 +5,7 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        'custom-dark-purple': '#01011b',
+        'custom-dark-purple': '#1d1f2a',
       },
       screens: { 
         'mobile-320': '320px', 
