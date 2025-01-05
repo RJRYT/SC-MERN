@@ -11,10 +11,25 @@ module.exports = withMT({
         'custom-dark': '0 4px 8px rgba(0, 0, 0, 0.5)',
       },
     },
-    screens: { 
+    screens: {
       'sm-only': { 'max': '639px' },
     },
-    
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.scrollbar-hide': {
+          /* Hide scrollbar for Chrome, Safari and Opera */
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+          /* Hide scrollbar for IE, Edge and Firefox */
+          '-ms-overflow-style': 'none',  /* IE and Edge */
+          'scrollbar-width': 'none',  /* Firefox */
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive']);
+    },
+  ],
 });

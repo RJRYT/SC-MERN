@@ -9,7 +9,7 @@ function HeaderComponent() {
   const [activeTab, setActiveTab] = useState('faq');
 
   return (
-    <div>
+    <div className=''>
       <div className='bg-dark-purple text-white p-6 pt-12 h-28 flex items-center justify-between'>
 
         <button className='rounded-full border-2 border-white flex justify-center items-center p-2'>
@@ -21,11 +21,11 @@ function HeaderComponent() {
         </h6>
 
         <div className="flex items-center space-x-4">
-          <button className={`rounded-full border-2 border-t-white flex justify-center items-center p-2 ${activeTab === 'contact' ? 'hidden' : ''}`}>
-            <RiEqualizer2Line className="text-white text-3xl sm-only:text-2xl" />
+          <button className={`rounded-full border-2 border-t-white flex justify-center items-center p-2  ${activeTab === 'contact' ? 'hidden' : ''}`}>
+            <RiEqualizer2Line className="text-white text-3xl sm-only:text-2xl " />
           </button>
-          <button className={`flex justify-center items-center p-2 ${activeTab === 'contact' ? 'hidden' : ''}`}>
-            <FaQ className="text-white text-3xl sm-only:text-2xl" />
+          <button className={`flex justify-center items-center p-2  ${activeTab === 'contact' ? 'hidden' : ''}`}>
+            <FaQ className="text-white text-3xl sm-only:text-2xl " />
           </button>
         </div>
       </div>

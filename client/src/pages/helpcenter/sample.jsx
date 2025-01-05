@@ -20,7 +20,7 @@ const FaqPage = () => {
   return (
     <div className="bg-gray-300 w-full min-h-screen">
       <div className="flex justify-around m-0 pt-4 overflow-x-scroll  sm:overflow-x-visible space-x-2 scrollbar-hide">
-        {['General', 'Account', 'Payment', 'Services'].map((tab) => (
+        {['General', 'Account', 'Payment', 'Service'].map((tab) => (
           <button
             key={tab}
             className={`w-1/6 p-5 border-2 border-black rounded-full mx-2 sm-only:w-1/2  ${activeTab === tab ? 'bg-black text-white' : 'bg-white text-black'}`}
