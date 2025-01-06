@@ -17,7 +17,7 @@ import { FiEdit2 } from "react-icons/fi"; // Edit Icon
 import { FaMale, FaFemale } from "react-icons/fa"; // Gender Icons
 import { IoIosArrowBack } from "react-icons/io"; // Back Arrow Icon
 
-export const FillProfile = () => {
+const FillProfile = () => {
   const [profileImage, setProfileImage] = React.useState(
     "image/profileicon.jpg"
   );
@@ -185,3 +185,4 @@ export const FillProfile = () => {
   );
 };
 
+export default FillProfile;

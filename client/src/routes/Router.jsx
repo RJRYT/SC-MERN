@@ -11,9 +11,11 @@ const NotFound = lazy(() => import("../pages/common/notFound"));
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const Settings = lazy(() => import("../pages/dashboard/Settings"));
-const Terms = lazy(() => import("../pages/terms/Terms");
-import { FillProfile } from "../pages/auth/FillProfile";
-import { CongratulationsPage } from "../pages/auth/CongratulationPage";
+const Terms = lazy(() => import("../pages/common/Terms"));
+const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
+const CongratulationsPage = lazy(() =>
+  import("../pages/auth/CongratulationPage")
+);
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -65,16 +67,38 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorElement />,
   },
-    {
+  {
     path: "terms",
-    element:(
+    element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
-          <Terms/>
+          <Terms />
         </Suspense>
       </ErrorBoundary>
     ),
-     errorElement: <ErrorElement />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "fillprofile",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <FillProfile />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "congratulationpage",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CongratulationsPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
     path: "otpverification",
@@ -118,14 +142,6 @@ const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
-    {
-    path: "fillprofile",
-    element: <FillProfile />,
-  },
-  {
-    path: "congratulationpage",
-    element: <CongratulationsPage />,
-  }
 ]);
 
 export default function Router() {
