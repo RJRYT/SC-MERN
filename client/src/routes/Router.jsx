@@ -4,35 +4,58 @@ import { RootLayout } from '../layouts/RootLayout';
 import { UserLayout } from '../layouts/UserLayout';
 import SignUp from '../pages/root/signup';
 import Login from '../pages/root/Login';
+import { OtpVerification } from "../pages/root/OtpVerification";
+import { RegisterNow } from "../pages/root/RegisterNow";
+import { SplashScreen } from "./../pages/root/SplashScreen";
+import { AllowLocation } from './../pages/root/AllowLocation';
 
-// import { RegisterNow } from "../pages/root/RegisterNow";
-// import { SplashScreen } from "./../pages/root/SplashScreen";
-// import { Login } from "../pages/root/Login";
+import { ErrorPage404 } from "../pages/errorPage/ErrorPage404";
+import { ErrorPageAccessDenide } from "../pages/errorPage/ErrorPageAccessDenide";
+
+
+
+
+
+
+
+
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    errorElement: <ErrorPage />,
-    element: <RootLayout />,
-    children: [
-      //   {
-      //     path: "",
-      //     // path: "splashscreen",
-      //     element: <SplashScreen />,
-      //   },
-      //   {
-      //     path: "register",
-      //     element: <RegisterNow />,
-      //   },
-      //   {
-      //     path: "login",
-      //     element: <Login />,
-      //   },
-    ],
+    index: true,
+    path: "",
+    element: <SplashScreen />,
   },
   {
-    path: 'user',
-    element: <UserLayout />,
+    path: "/",
+
+    element: <RootLayout />,
+    children: [
+      {
+        path: "user",
+        element: <UserLayout />,
+      },
+      {
+        path: "register",
+        element: <RegisterNow />,
+      },
+      {
+    path: "allowlocation",
+    element: <AllowLocation/>,
+  },
+  {
+    path: "otpverification",
+    element: <OtpVerification />,
+  },
+  {
+    path: "error1",
+    element: <ErrorPage404/>,
+  },
+  {
+    path: "error2",
+    element: <ErrorPageAccessDenide/>,
+  },
+    ],
   },
   {
     path: 'signup',
