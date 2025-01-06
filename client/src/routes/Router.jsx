@@ -12,6 +12,7 @@ const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const Settings = lazy(() => import("../pages/dashboard/Settings"));
 const Terms = lazy(() => import("../pages/common/Terms"));
+const About = lazy(() => import("../pages/root/About"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
@@ -142,6 +143,11 @@ const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+  {
+    path:"root",
+    element:<About/>
+  }
+ 
 ]);
 
 export default function Router() {
