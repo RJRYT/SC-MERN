@@ -6,6 +6,9 @@ module.exports = withMT({
     extend: {
       fontFamily: {
         titillium: ["Titillium Web", "sans-serif"],
+        jost: ['Jost', 'serif'],
+        mulish: ['mulish', 'serif'],
+        nano: ['Noto Sans', 'serif'],
       },
     },
   },

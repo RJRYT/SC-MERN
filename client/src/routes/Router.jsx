@@ -1,10 +1,12 @@
-import { createBrowserRouter } from "react-router-dom";
-import { RootLayout } from "../layouts/RootLayout";
-import { UserLayout } from "../layouts/UserLayout";
+import { createBrowserRouter } from 'react-router-dom';
+import { ErrorPage } from '../pages/errorPage/ErrorPage';
+import { RootLayout } from '../layouts/RootLayout';
+import { UserLayout } from '../layouts/UserLayout';
+import SignUp from '../pages/root/signup';
+import Login from '../pages/root/Login';
 import { OtpVerification } from "../pages/root/OtpVerification";
 import { RegisterNow } from "../pages/root/RegisterNow";
 import { SplashScreen } from "./../pages/root/SplashScreen";
-// import { Login } from "../pages/root/Login";
 import { AllowLocation } from './../pages/root/AllowLocation';
 
 import { ErrorPage404 } from "../pages/errorPage/ErrorPage404";
@@ -54,5 +56,13 @@ export const router = createBrowserRouter([
     element: <ErrorPageAccessDenide/>,
   },
     ],
+  },
+  {
+    path: 'signup',
+    element: <SignUp />,
+  },
+  {
+    path: 'login',
+    element: <Login></Login>,
   },
 ]);
