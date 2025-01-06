@@ -1,49 +1,49 @@
 import { Checkbox, Button } from '@material-tailwind/react';
 import { Link } from 'react-router-dom';
-import { MdEmail } from 'react-icons/md';
+import { MdOutlineEmail } from 'react-icons/md';
 import { IoLockClosedOutline } from 'react-icons/io5';
 import { FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
 import { FaRegEye } from 'react-icons/fa';
-import { MdOutlineArrowCircleRight } from 'react-icons/md';
+import { FaCircleArrowRight } from 'react-icons/fa6';
+import logo from '../../assets/react.svg';
+
 const SignUp = () => {
   const [show, setShow] = useState(false);
   return (
     <>
-      <div className="h-screen bg-[#d8d8e5] flex flex-col">
-        <div className="text-center mt-10 font-nano text-3xl font-extrabold">
-          Service Connect
+      <div className="h-fit xl:h-screen bg-[#d8d8e5] flex flex-col">
+        <div className="text-center mt-10 font-nano text-3xl font-extrabold gap-5 flex justify-center">
+          <img src={logo}></img> Service Connect
         </div>
-        <div className="w-10/12 flex flex-col gap-y-5 mx-auto mt-[40px]">
+        <div className="w-10/12 sm:w-8/12 md:w-6/12 xl:w-4/12 2xl:w-3/12 flex flex-col gap-y-5 mx-auto mt-[40px]">
           <div className="font-semibold text-base leading- font-jost sm:text-2xl">
             Getting Started...!
           </div>
           <div className="relative flex items-center">
             <input
               placeholder="Email"
-              className="bg-[#736967] rounded-md pl-7 w-full h-10 font-sans placeholder-white text-black border-none ring-2 ring-pink-400"
-              label="Email"
+              className="bg-[#736967] shadow-[0px_5px_15px_grey] placeholder-opacity-75  rounded-xl pl-10 w-full h-14 font-sans placeholder-white  text-white border-none "
             />
-            <MdEmail className="absolute left-[5px] " />
+            <MdOutlineEmail className="absolute text-white ml-[15px]" />
           </div>
           <div className="relative flex items-center">
             <input
               placeholder="Password"
-              className="bg-[#736967] rounded-md pl-7 w-full h-10 font-sans placeholder-white text-black border-none ring-2 ring-pink-400"
-              label="Email"
+              className="bg-[#736967] placeholder-opacity-70 shadow-[0px_5px_15px_grey]  rounded-xl pl-10 w-full h-14 font-sans placeholder-white  text-white border-none"
               type={show ? 'text' : 'password'}
             />
-            <IoLockClosedOutline className="absolute left-[5px]" />
+            <IoLockClosedOutline className="absolute left-[15px] text-white" />
             {!show ? (
               <FaEyeSlash
-                className="absolute right-[15px]"
+                className="absolute right-[15px] text-white"
                 onClick={() => {
                   setShow(!show);
                 }}
               />
             ) : (
               <FaRegEye
-                className="absolute right-[15px]"
+                className="absolute right-[15px] text-white"
                 onClick={() => {
                   setShow(!show);
                 }}
@@ -53,14 +53,14 @@ const SignUp = () => {
           <div className="relative flex items-center">
             <input
               placeholder="ConformPassword"
-              className="bg-[#736967] rounded-md pl-7 w-full h-10 font-sans placeholder-white text-black border-none ring-2 ring-pink-400"
+              className="bg-[#736967] shadow-[0px_20px_20px_grey]  rounded-xl pl-10 w-full h-14 font-sans placeholder-white placeholder-opacity-70 text-white border-none "
               label="Email"
               type={show ? 'text' : 'password'}
             />
-            <IoLockClosedOutline className="absolute left-[5px]" />
+            <IoLockClosedOutline className="absolute left-[15px] text-white" />
             {!show ? (
               <FaEyeSlash
-                className="absolute right-[15px]"
+                className="absolute right-[15px] text-white"
                 onClick={() => {
                   setShow(!show);
                 }}
@@ -81,16 +81,13 @@ const SignUp = () => {
             </span>
           </div>
           <div>
-            <Button
-              fullWidth
-              className="rounded-full leading-5 relative flex items-center justify-center"
-            >
+            <button className="w-full rounded-full shadow-[0px_15px_15px_grey] leading-5 relative flex items-center justify-center h-[60px] bg-black text-white text-xl font-bold">
               Sign In
-              <MdOutlineArrowCircleRight className="absolute right-4 text-3xl" />
-            </Button>
+              <FaCircleArrowRight className="absolute right-2 text-5xl " />
+            </button>
           </div>
         </div>
-        <div className="flex flex-col gap-y-5 mt-10 items-center">
+        <div className="flex flex-col gap-y-5 mt-7 items-center">
           <div>
             <span className="font-mulish sm:text-sm md:font-extrabold text-[#545454]">
               Or Connect With
@@ -115,6 +112,7 @@ const SignUp = () => {
           <span className="font-mulish sm:text-xs md:font-extrabold md:text-sm text-[#545454]">
             Already have an Account?
           </span>
+          <span> .</span>
           <Link className="underline font-nano font-semibold" to="/login">
             SIGNIN
           </Link>
