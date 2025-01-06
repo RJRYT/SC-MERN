@@ -16,7 +16,7 @@ function HeaderComponent() {
           <IoIosArrowBack className="text-white text-3xl sm-only:text-2xl" />
         </button>
         
-        <h6 className={`text-center font-bold md:w-auto md:flex-grow-0 text-lg md:text-2xl md:absolute md:left-1/2 md:transform md:-translate-x-1/2 ${activeTab === 'contact' ? ' sm-only:mr-32':''}`}>
+        <h6 className={`text-center font-bold md:w-auto md:flex-grow-0 text-lg md:text-2xl md:absolute md:left-1/2 md:transform md:-translate-x-1/2 ${activeTab === 'contact' ? ' sm-only:gap-3 sm-only:mr-16':''}`}>
           HELP CENTER
         </h6>
 
