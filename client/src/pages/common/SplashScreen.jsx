@@ -5,7 +5,11 @@ import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/illustrationLogo.png";
-export const SplashScreen = () => {
+const SplashScreen = () => {
+  const navigate = useNavigate();
+
+  const gotoGoogleAuth = () => navigate("/auth/google");
+  const gotoLocalAuth = () => navigate("/login");
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#1d1f2a]">
@@ -16,6 +20,7 @@ export const SplashScreen = () => {
         {/* Buttons */}
         <div className="space-y-4 max-w-sm mx-auto">
           <Button
+            onClick={gotoLocalAuth}
             size="sm"
             variant="outlined"
             color="blue-gray"
@@ -24,11 +29,12 @@ export const SplashScreen = () => {
             <div className="bg-black rounded-full w-8 h-8 flex items-center justify-center">
               <FiPhoneCall className="text-white" />
             </div>
-            <Typography className="font-titillium  font-bold">
+            <Typography className="font-titillium font-bold">
               Login with Email/Phone
             </Typography>
           </Button>
           <Button
+            onClick={gotoGoogleAuth}
             size="sm"
             variant="outlined"
             color="blue-gray"
@@ -44,7 +50,7 @@ export const SplashScreen = () => {
         {/* Footer Text */}
         <p className="text-white font-titillium font-bold">
           Don't have an account?{" "}
-          <Link to="/register" className="underline">
+          <Link to="signup" className="underline">
             Sign Up
           </Link>
         </p>
@@ -52,3 +58,5 @@ export const SplashScreen = () => {
     </div>
   );
 };
+
+export default SplashScreen;

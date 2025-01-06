@@ -1,59 +1,111 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { RootLayout } from '../layouts/RootLayout';
-import { UserLayout } from '../layouts/UserLayout';
-import SignUp from '../pages/root/signup';
-import Login from '../pages/root/Login';
-import { OtpVerification } from "../pages/root/OtpVerification";
-import { RegisterNow } from "../pages/root/RegisterNow";
-import { SplashScreen } from "./../pages/root/SplashScreen";
-import { AllowLocation } from './../pages/root/AllowLocation';
+import React, { lazy, Suspense } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { ErrorPage404 } from "./../pages/errorPage/ErrorPage404";
-import { ErrorPageAccessDenide } from "./../pages/errorPage/ErrorPageAccessDenide";
+const SignUp = lazy(() => import("../pages/auth/Signup"));
+const Login = lazy(() => import("../pages/auth/Login"));
+const OtpVerification = lazy(() => import("../pages/auth/OtpVerification"));
+const SplashScreen = lazy(() => import("../pages/common/SplashScreen"));
+const AllowLocation = lazy(() => import("../pages/auth/AllowLocation"));
+const AccessDenied = lazy(() => import("../pages/common/AccessDenied"));
+const NotFound = lazy(() => import("../pages/common/notFound"));
+const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
+const Profile = lazy(() => import("../pages/dashboard/Profile"));
+const Settings = lazy(() => import("../pages/dashboard/Settings"));
 
-export const router = createBrowserRouter([
+import ErrorElement from "../pages/common/ErrorElement";
+import ErrorBoundary from "../pages/common/ErrorBoundary";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+
+const router = createBrowserRouter([
   {
     index: true,
     path: "",
-    element: <SplashScreen />,
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <SplashScreen />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
-    path: "/",
-
-    element: <RootLayout />,
-    children: [
-      {
-        path: "user",
-        element: <UserLayout />,
-      },
-      {
-        path: "register",
-        element: <RegisterNow />,
-      },
-      {
+    path: "signup",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <SignUp />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "login",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Login />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "allowlocation",
-    element: <AllowLocation/>,
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <AllowLocation />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
     path: "otpverification",
-    element: <OtpVerification />,
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <OtpVerification />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
-    path: "error1",
-    element: <ErrorPage404/>,
-  },
-  {
-    path: "error2",
-    element: <ErrorPageAccessDenide/>,
-  },
+    path: "dashboard",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Dashboard />
+        </Suspense>
+      </ErrorBoundary>
+    ), // Example parent route
+    ErrorBoundary: <ErrorElement />,
+    children: [
+      { path: "profile", element: <Profile /> },
+      { path: "settings", element: <Settings /> },
     ],
   },
   {
-    path: 'signup',
-    element: <SignUp />,
+    path: "accessdenied",
+    element: (
+      <ErrorBoundary>
+        <AccessDenied />
+      </ErrorBoundary>
+    ),
   },
   {
-    path: 'login',
-    element: <Login></Login>,
+    path: "*",
+    element: (
+      <ErrorBoundary>
+        <NotFound />
+      </ErrorBoundary>
+    ),
   },
 ]);
+
+export default function Router() {
+  return <RouterProvider router={router} />;
+}
