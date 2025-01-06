@@ -6,7 +6,7 @@ import { FaEyeSlash } from 'react-icons/fa';
 import { useState } from 'react';
 import { FaRegEye } from 'react-icons/fa';
 import { FaCircleArrowRight } from 'react-icons/fa6';
-import logo from '../../assets/react.svg';
+import logo from '../../assets/images/logo.png';
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
