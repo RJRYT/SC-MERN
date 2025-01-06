@@ -7,7 +7,7 @@ import { SiInstagram } from "react-icons/si";
 
 const ContactUs = () => {
   return (
-    <div className='bg-gray-bg w-full min-h-screen flex flex-col space-y-4 p-14  items-center'>
+    <div className='bg-gray-bg w-full min-h-screen flex flex-col space-y-4 p-8 sm-only:p-4  items-center'>
       
       <button className='w-1/2 sm-only:w-full flex flex-col sm-only:flex-row items-center justify-center bg-white text-black p-8 gap-3 rounded-3xl shadow-custom-dark'>
         <MdOutlineHeadset className="mr-2 text-2xl sm-only:mr-4 sm-only:w-1/6" />

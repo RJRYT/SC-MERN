@@ -25,7 +25,7 @@ function HeaderComponent() {
             <RiEqualizer2Line className="text-white text-3xl sm-only:text-2xl " />
           </button>
           <button className={`flex justify-center items-center p-2  ${activeTab === 'contact' ? 'hidden' : ''}`}>
-            <FaQ className="text-white text-3xl sm-only:text-2xl " />
+            <FaQ className="text-white text-4xl sm-only:text-2xl " />
           </button>
         </div>
       </div>
@@ -35,7 +35,7 @@ function HeaderComponent() {
           className={`w-1/2 p-4 ${activeTab === 'faq' ? 'bg-gray-bg text-black border-b-2 border-blue-900' : 'bg-white text-gray-600'}`}
           onClick={() => setActiveTab('faq')}
         >
-          faqFAQ
+          FAQ
         </button>
         <button
           className={`w-1/2 p-4 ${activeTab === 'contact' ? 'bg-bg-gray-bg text-black border-b-2 border-blue-900' : 'bg-white text-gray-600'}`}
