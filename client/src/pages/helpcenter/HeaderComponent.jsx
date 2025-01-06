@@ -9,8 +9,8 @@ function HeaderComponent() {
   const [activeTab, setActiveTab] = useState('faq');
 
   return (
-    <div className=''>
-      <div className='bg-dark-purple text-white p-6 pt-12 h-28 flex items-center justify-between'>
+    <div>
+      <div className='bg-dark-purple text-white p-6 pt-12 h-28 flex items-center justify-between  sm-only:flex sm-only:gap-3'>
 
         <button className='rounded-full border-2 border-white flex justify-center items-center p-2'>
           <IoIosArrowBack className="text-white text-3xl sm-only:text-2xl" />
