@@ -14,6 +14,10 @@ module.exports = withMT({
         primary: "#1d1f2a",
         background: "#d9d9db",
         secondary: "#736a68",
+        'custom-dark-purple': '#1d1f2a',
+      },
+      screens: { 
+        'mobile-320': '320px', 
       },
     },
   },
