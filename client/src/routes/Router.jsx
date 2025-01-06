@@ -1,12 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import { RootLayout } from "../layouts/RootLayout";
 import { UserLayout } from "../layouts/UserLayout";
-
 import { OtpVerification } from "../pages/root/OtpVerification";
-
-
-// import { RegisterNow } from "../pages/root/RegisterNow";
-// import { SplashScreen } from "./../pages/root/SplashScreen";
+import { RegisterNow } from "../pages/root/RegisterNow";
+import { SplashScreen } from "./../pages/root/SplashScreen";
 // import { Login } from "../pages/root/Login";
 import { AllowLocation } from './../pages/root/AllowLocation';
 
@@ -23,30 +20,24 @@ import { ErrorPageAccessDenide } from "../pages/errorPage/ErrorPageAccessDenide"
 
 export const router = createBrowserRouter([
   {
+    index: true,
+    path: "",
+    element: <SplashScreen />,
+  },
+  {
     path: "/",
 
     element: <RootLayout />,
     children: [
-      //   {
-      //     path: "",
-      //     // path: "splashscreen",
-      //     element: <SplashScreen />,
-      //   },
-      //   {
-      //     path: "register",
-      //     element: <RegisterNow />,
-      //   },
-      //   {
-      //     path: "login",
-      //     element: <Login />,
-      //   },
-    ],
-  },
-  {
-    path: "user",
-    element: <UserLayout />,
-  },
-  {
+      {
+        path: "user",
+        element: <UserLayout />,
+      },
+      {
+        path: "register",
+        element: <RegisterNow />,
+      },
+      {
     path: "allowlocation",
     element: <AllowLocation/>,
   },
@@ -61,5 +52,7 @@ export const router = createBrowserRouter([
   {
     path: "error2",
     element: <ErrorPageAccessDenide/>,
+  },
+    ],
   },
 ]);
