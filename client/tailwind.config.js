@@ -6,6 +6,7 @@ module.exports = withMT({
     extend: {
       colors: {
         "dark-purple": "#1d1f2a",
+        "gray-bg":"#d9d9db",
       },
       boxShadow: {
         'custom-dark': '0 4px 8px rgba(0, 0, 0, 0.5)',
@@ -19,13 +20,13 @@ module.exports = withMT({
     function({ addUtilities }) {
       const newUtilities = {
         '.scrollbar-hide': {
-          /* Hide scrollbar for Chrome, Safari and Opera */
+          //  Hide scrollbar for Chrome
           '&::-webkit-scrollbar': {
             display: 'none',
           },
-          /* Hide scrollbar for IE, Edge and Firefox */
-          '-ms-overflow-style': 'none',  /* IE and Edge */
-          'scrollbar-width': 'none',  /* Firefox */
+          //  Hide scrollbar for IE, Edge and Firefox 
+          '-ms-overflow-style': 'none',  // IE and Edge 
+          'scrollbar-width': 'none',  // Firefox 
         },
       };
 

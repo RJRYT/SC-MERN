@@ -18,7 +18,7 @@ const FaqPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <div className="bg-gray-300 w-full min-h-screen">
+    <div className="bg-gray-bg w-full min-h-screen">
       <div className="flex justify-around m-0 pt-4 overflow-x-scroll  sm:overflow-x-visible space-x-2 scrollbar-hide">
         {['General', 'Account', 'Payment', 'Services'].map((tab) => (
           <button
