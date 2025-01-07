@@ -11,6 +11,14 @@ const NotFound = lazy(() => import("../pages/common/notFound"));
 const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
 const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const Settings = lazy(() => import("../pages/dashboard/Settings"));
+const Terms = lazy(() => import("../pages/common/Terms"));
+const About = lazy(() => import("../pages/common/About"));
+const Notification = lazy(() => import("../pages/common/Notification"));
+const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
+const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
+const CongratulationsPage = lazy(() =>
+  import("../pages/auth/CongratulationPage")
+);
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -63,11 +71,77 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "about",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <About />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "terms",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Terms />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "notification",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Notification />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "fillprofile",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <FillProfile />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "congratulationpage",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CongratulationsPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "otpverification",
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <OtpVerification />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "help",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <HelpCenter />
         </Suspense>
       </ErrorBoundary>
     ),
