@@ -25,7 +25,7 @@ import { CiCircleChevLeft } from "react-icons/ci"; // Back Arrow Icon
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 
-export const FillProfile = () => {
+const FillProfile = () => {
   const [profileImage, setProfileImage] = React.useState(
     "image/profile_icon_jpg.png"
   );
@@ -360,3 +360,5 @@ export const FillProfile = () => {
     </div>
   );
 };
+
+export default FillProfile;
