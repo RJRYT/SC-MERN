@@ -22,7 +22,7 @@ function CustomNavbar() {
             style={{
               backgroundColor: "transparent",
               color: "white",
-              
+      
             }}
           >
             <IoIosArrowBack size={24} />
@@ -40,7 +40,7 @@ function CustomNavbar() {
             Notifications Settings
           </Typography>
 
-         
+        
         </div>
       </MTNavbar>
     </div>
