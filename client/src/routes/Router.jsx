@@ -15,6 +15,7 @@ const Terms = lazy(() => import("../pages/common/Terms"));
 const About = lazy(() => import("../pages/common/About"));
 const Notification = lazy(() => import("../pages/common/Notification"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
+import HelpCenter from "../pages/helpcenter/HelpCenter";
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
@@ -165,6 +166,10 @@ const router = createBrowserRouter([
         <NotFound />
       </ErrorBoundary>
     ),
+  },
+  {
+    path: "help",
+    element: <HelpCenter />,
   },
 ]);
 
