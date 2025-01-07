@@ -19,6 +19,7 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+import Inbox from "../pages/root/Inbox";
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -131,6 +132,18 @@ const router = createBrowserRouter([
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <OtpVerification />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+
+  },
+  {
+    path:"inbox",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+        <Inbox/>
         </Suspense>
       </ErrorBoundary>
     ),
