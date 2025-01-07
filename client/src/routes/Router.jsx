@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Notification from "../pages/root/Notification";
 const SignUp = lazy(() => import("../pages/auth/Signup"));
 const Login = lazy(() => import("../pages/auth/Login"));
 const OtpVerification = lazy(() => import("../pages/auth/OtpVerification"));
@@ -14,6 +13,7 @@ const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const Settings = lazy(() => import("../pages/dashboard/Settings"));
 const Terms = lazy(() => import("../pages/common/Terms"));
 const About = lazy(() => import("../pages/common/About"));
+const Notification = lazy(() => import("../pages/common/Notification"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
@@ -92,6 +92,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "notification",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Notification />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "fillprofile",
     element: (
       <ErrorBoundary>
@@ -155,10 +166,6 @@ const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
-  {
-    path:"notification",
-    element:<Notification/>
-  }
 ]);
 
 export default function Router() {
