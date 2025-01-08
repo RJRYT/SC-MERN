@@ -7,7 +7,9 @@ import { UserLayout } from "../layouts/UserLayout";
 // import { Login } from "../pages/root/Login";
 import { FillProfile } from "../pages/root/FillProfile";
 import { CongratulationsPage } from "../pages/root/CongratulationPage";
-//import { CongratulationPage } from "../pages/root/CongratulationPage";
+
+import { SearchBarPage } from "../pages/root/SearchBarPage";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -40,5 +42,9 @@ export const router = createBrowserRouter([
   {
     path: "congratulationpage",
     element: <CongratulationsPage />,
+  },
+  {
+    path: "searchbarpage",
+    element: <SearchBarPage />,
   },
 ]);
