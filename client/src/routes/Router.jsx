@@ -4,6 +4,8 @@ import { RootLayout } from "../layouts/RootLayout";
 import { UserLayout } from "../layouts/UserLayout";
 import { RegisterNow } from "../pages/root/RegisterNow";
  import { SplashScreen } from "./../pages/root/SplashScreen";
+ import Notification from "./../pages/notification/Notification"
+import CakeDelivery from "../pages/cakeDelivery/CakeDelivery";
 // import { Login } from "../pages/root/Login";
 
 export const router = createBrowserRouter([
@@ -12,6 +14,11 @@ export const router = createBrowserRouter([
     path: "",
     element: <SplashScreen />,
   },
+  {
+    path: "notification",
+    element: <Notification />,
+  },
+  
   {
     path: "/",
     errorElement: <ErrorPage />,
@@ -24,7 +31,8 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <RegisterNow />,
-      }
+      },
+      
     ],
   },
 ]);
