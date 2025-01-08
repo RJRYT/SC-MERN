@@ -8,7 +8,7 @@ const mapContainerStyle = {
 };
 
 
-export const AllowLocation = () => {
+const AllowLocation = () => {
   const [locations] = useState([
     "Kannur",
     "Alappuzha",

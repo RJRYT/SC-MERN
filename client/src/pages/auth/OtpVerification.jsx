@@ -3,7 +3,7 @@ import { CiCircleChevLeft } from "react-icons/ci";
 import { IoBackspaceOutline } from "react-icons/io5";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
-export const OtpVerification = () => {
+const OtpVerification = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
 
   const handleChange = (e, index) => {
@@ -146,3 +146,5 @@ export const OtpVerification = () => {
     </div>
   );
 };
+
+export default OtpVerification;
