@@ -12,6 +12,9 @@ import { AllowLocation } from './../pages/root/AllowLocation';
 
 import { ErrorPage404 } from "../pages/errorPage/ErrorPage404";
 import { ErrorPageAccessDenide } from "../pages/errorPage/ErrorPageAccessDenide";
+import { CreateNewPassword } from "../pages/root/CreateNewPassword";
+
+
 
 
 
@@ -62,4 +65,9 @@ export const router = createBrowserRouter([
     path: "error2",
     element: <ErrorPageAccessDenide/>,
   },
+  {
+    path: "newpassword",
+    element:<CreateNewPassword/>
+  }
+
 ]);
