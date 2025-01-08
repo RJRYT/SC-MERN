@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import validator from "validator";
 import { User } from "../../models/userModels.js";
+import jwt from "jsonwebtoken";
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -156,5 +157,54 @@ export const userProfile = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+export const createAccessToken = async (req, res) => {
+  try {
+    const { refreshToken } = req.cookies;
+    // console.log("Refresh token ==>", refreshToken);
+
+    if (!refreshToken) {
+      return res.status(401).json({
+        success: false,
+        message: "Refresh token missing. Please log in again.",
+      });
+    }
+
+    let refreshTokenVerified;
+    try {
+      refreshTokenVerified = jwt.verify(
+        refreshToken,
+        process.env.JWT_REFRESH_SECRET_KEY
+      );
+    } catch (error) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid or expired refresh token. Please log in again.",
+      });
+    }
+
+    const userId = refreshTokenVerified.user_id;
+
+    // Generate new access token
+    const newAccessToken = generateAccessToken(userId);
+
+    res.cookie("accessToken", newAccessToken, {
+      sameSite: "None",
+      secure: true,
+      httpOnly: true,
+    });
+
+    // console.log("New access token generated and set:", newAccessToken);
+
+    res.status(200).json({
+      success: true,
+      message: "Access token created successfully.",
+      // accessToken: newAccessToken, 
+    });
+  } catch (error) {
+    console.error("Error in createAccessToken:", error);
+    res.status(500).json({ success: false, message: "Internal server error." });
   }
 };
