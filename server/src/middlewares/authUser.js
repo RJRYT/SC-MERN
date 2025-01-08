@@ -3,7 +3,7 @@ import { generateAccessToken } from "../utils/generateUserToken.js";
 
 export const authUser = (req, res, next) => {
   try {
-    const { accessToken, refreshToken } = req.cookies;
+    const { accessToken } = req.cookies;
 
     if (!accessToken) {
       return res.status(401).json({
@@ -12,58 +12,15 @@ export const authUser = (req, res, next) => {
       });
     }
 
-    let tokenVerified;
-
-    try {
-      tokenVerified = jwt.verify(
-        accessToken,
-        process.env.JWT_ACCESS_SECRET_KEY
-      );
-    } catch (error) {
-      if (error instanceof jwt.TokenExpiredError) {
-        console.log("Access token expired");
-
-        if (!refreshToken) {
-          return res.status(403).json({
-            success: false,
-            message: "Refresh token missing. Please log in again.",
-          });
-        }
-
-        let refreshTokenVerified;
-
-        try {
-          refreshTokenVerified = jwt.verify(
-            refreshToken,
-            process.env.JWT_REFRESH_SECRET_KEY
-          );
-        } catch (refreshError) {
-          return res.status(403).json({
-            success: false,
-            message: "Invalid or expired refresh token. Please log in again.",
-          });
-        }
-
-        const newAccessToken = generateAccessToken(
-          refreshTokenVerified.user_id
-        );
-
-        res.cookie("accessToken", newAccessToken, {
-          sameSite: "None",
-          secure: true,
-          httpOnly: true,
-        });
-
-        console.log("New access token generated and set.");
-        tokenVerified = jwt.verify(
-          newAccessToken,
-          process.env.JWT_ACCESS_SECRET_KEY
-        );
-      } else {
-        return res
-          .status(401)
-          .json({ success: false, message: "Invalid access token." });
-      }
+    const tokenVerified = jwt.verify(
+      accessToken,
+      process.env.JWT_ACCESS_SECRET_KEY
+    );
+    if (!tokenVerified) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid access token.",
+      });
     }
 
     req.user = tokenVerified;
