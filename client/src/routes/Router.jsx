@@ -1,3 +1,6 @@
+import Notification from "./../pages/notification/Notification"
+import CakeDelivery from "../pages/cakeDelivery/CakeDelivery";
+
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -105,7 +108,7 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorElement />,
   },
-  {
+  { 
     path: "fillprofile",
     element: (
       <ErrorBoundary>
