@@ -139,6 +139,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "newpassword",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CreateNewPassword />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "help",
     element: (
       <ErrorBoundary>
@@ -180,11 +191,6 @@ const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
-  {
-    path: "newpassword",
-    element:<CreateNewPassword/>
-  }
-
 ]);
 
 export default function Router() {
