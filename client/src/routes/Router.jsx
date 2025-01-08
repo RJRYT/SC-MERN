@@ -24,6 +24,8 @@ import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
+import { CreateNewPassword } from "../pages/root/CreateNewPassword";
+
 const router = createBrowserRouter([
   {
     index: true,
@@ -178,6 +180,11 @@ const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+  {
+    path: "newpassword",
+    element:<CreateNewPassword/>
+  }
+
 ]);
 
 export default function Router() {
