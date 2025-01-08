@@ -1,6 +1,3 @@
-import Notification from "./../pages/notification/Notification"
-import CakeDelivery from "../pages/cakeDelivery/CakeDelivery";
-
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -16,7 +13,7 @@ const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const Settings = lazy(() => import("../pages/dashboard/Settings"));
 const Terms = lazy(() => import("../pages/common/Terms"));
 const About = lazy(() => import("../pages/common/About"));
-const Notification = lazy(() => import("../pages/common/Notification"));
+const NotificationSett = lazy(() => import("../pages/common/Notification"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
 const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
@@ -28,6 +25,7 @@ import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
 import { CreateNewPassword } from "../pages/root/CreateNewPassword";
+import Notification from "./../pages/notification/Notification";;
 
 const router = createBrowserRouter([
   {
@@ -102,13 +100,24 @@ const router = createBrowserRouter([
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
+          <NotificationSett />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "notification2",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
           <Notification />
         </Suspense>
       </ErrorBoundary>
     ),
     errorElement: <ErrorElement />,
   },
-  { 
+  {
     path: "fillprofile",
     element: (
       <ErrorBoundary>
