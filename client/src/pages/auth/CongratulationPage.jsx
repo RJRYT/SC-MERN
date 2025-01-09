@@ -1,24 +1,23 @@
-import React from 'react';
+import React from "react";
 import { Card, Typography, Spinner } from "@material-tailwind/react";
 
-export const CongratulationsPage = () => {
+const CongratulationsPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-black px-4 sm:px-6 md:px-8">
       <Card className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
         <div className="flex flex-col items-center space-y-4">
           {/* Avatar */}
           <div className="relative rounded-full bg-white p-4">
-            
             <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center">
               {/* <Typography variant="h5" className="text-white">
                 🙂
               </Typography> */}
 
-<img
-  src="/images/men_icon_jpg.png"  // Correct file path
-  alt="Man Icon"
-  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover"
-/>
+              <img
+                src="/images/men_icon_jpg.png" // Correct file path
+                alt="Man Icon"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover"
+              />
             </div>
             <div className="absolute inset-0 flex justify-center items-center">
               <span className="absolute w-2 h-2 bg-red-500 rounded-full top-1 left-4"></span>
@@ -30,7 +29,11 @@ export const CongratulationsPage = () => {
             </div>
           </div>
           {/* Text */}
-          <Typography variant="h5" color="black" className="text-center text-xl sm:text-2xl md:text-3xl">
+          <Typography
+            variant="h5"
+            color="black"
+            className="text-center text-xl sm:text-2xl md:text-3xl"
+          >
             Congratulations
           </Typography>
           <Typography
@@ -48,13 +51,4 @@ export const CongratulationsPage = () => {
   );
 };
 
-
-
-
-
-
-
-
-
-
-
+export default CongratulationsPage;

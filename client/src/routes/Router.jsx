@@ -1,50 +1,215 @@
-import { createBrowserRouter } from "react-router-dom";
-import { ErrorPage } from "../pages/errorPage/ErrorPage";
-import { RootLayout } from "../layouts/RootLayout";
-import { UserLayout } from "../layouts/UserLayout";
-// import { RegisterNow } from "../pages/root/RegisterNow";
-// import { SplashScreen } from "./../pages/root/SplashScreen";
-// import { Login } from "../pages/root/Login";
-import { FillProfile } from "../pages/root/FillProfile";
-import { CongratulationsPage } from "../pages/root/CongratulationPage";
+import React, { lazy, Suspense } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+const SignUp = lazy(() => import("../pages/auth/Signup"));
+const Login = lazy(() => import("../pages/auth/Login"));
+const OtpVerification = lazy(() => import("../pages/auth/OtpVerification"));
+const SplashScreen = lazy(() => import("../pages/common/SplashScreen"));
+const AllowLocation = lazy(() => import("../pages/auth/AllowLocation"));
+const AccessDenied = lazy(() => import("../pages/common/AccessDenied"));
+const NotFound = lazy(() => import("../pages/common/notFound"));
+const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
+const Profile = lazy(() => import("../pages/dashboard/Profile"));
+const Settings = lazy(() => import("../pages/dashboard/Settings"));
+const Terms = lazy(() => import("../pages/common/Terms"));
+const About = lazy(() => import("../pages/common/About"));
+const NotificationSett = lazy(() => import("../pages/common/Notification"));
+const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
+const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
+const CongratulationsPage = lazy(() =>
+  import("../pages/auth/CongratulationPage")
+);
+
+import ErrorElement from "../pages/common/ErrorElement";
+import ErrorBoundary from "../pages/common/ErrorBoundary";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+
+import { CreateNewPassword } from "../pages/root/CreateNewPassword";
+import Notification from "./../pages/notification/Notification";
 import { SearchBarPage } from "../pages/root/SearchBarPage";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path: "/",
-    errorElement: <ErrorPage />,
-    element: <RootLayout />,
-    children: [
-      //   {
-      //     path: "",
-      //     // path: "splashscreen",
-      //     element: <SplashScreen />,
-      //   },
-      //   {
-      //     path: "register",
-      //     element: <RegisterNow />,
-      //   },
-      //   {
-      //     path: "login",
-      //     element: <Login />,
-      //   },
-    ],
+    index: true,
+    path: "",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <SplashScreen />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
-    path: "user",
-    element: <UserLayout />,
+    path: "signup",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <SignUp />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "login",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Login />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "allowlocation",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <AllowLocation />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "about",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <About />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "terms",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Terms />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "notification",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <NotificationSett />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "notification2",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Notification />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
     path: "fillprofile",
-    element: <FillProfile />,
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <FillProfile />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
     path: "congratulationpage",
-    element: <CongratulationsPage />,
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CongratulationsPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "otpverification",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <OtpVerification />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "newpassword",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CreateNewPassword />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "help",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <HelpCenter />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "dashboard",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Dashboard />
+        </Suspense>
+      </ErrorBoundary>
+    ), // Example parent route
+    ErrorBoundary: <ErrorElement />,
+    children: [
+      { path: "profile", element: <Profile /> },
+      { path: "settings", element: <Settings /> },
+    ],
+  },
+  {
+    path: "accessdenied",
+    element: (
+      <ErrorBoundary>
+        <AccessDenied />
+      </ErrorBoundary>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <ErrorBoundary>
+        <NotFound />
+      </ErrorBoundary>
+    ),
   },
   {
     path: "searchbarpage",
     element: <SearchBarPage />,
   },
 ]);
+
+export default function Router() {
+  return <RouterProvider router={router} />;
+}
