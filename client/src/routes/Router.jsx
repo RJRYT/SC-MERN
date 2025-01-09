@@ -23,6 +23,7 @@ const CongratulationsPage = lazy(() =>
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import HeaderChat from "../pages/Chatindox/HeaderChat";
 
 const router = createBrowserRouter([
   {
@@ -178,6 +179,19 @@ const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+  {
+      path: "chat",
+      element: (
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            <HeaderChat />
+          </Suspense>
+        </ErrorBoundary>
+      ),
+      errorElement: <ErrorElement />,
+    
+  },
+ 
 ]);
 
 export default function Router() {
