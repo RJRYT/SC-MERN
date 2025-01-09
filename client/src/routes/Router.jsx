@@ -19,14 +19,14 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
+const Notification = lazy(() => import("./../pages/notification/Notification"));
+const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
+
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-
-import { CreateNewPassword } from "../pages/root/CreateNewPassword";
-import Notification from "./../pages/notification/Notification";
-import { SearchBarPage } from "../pages/root/SearchBarPage";
 
 const router = createBrowserRouter([
   {
@@ -163,6 +163,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "searchbarpage",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <SearchBarPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "help",
     element: (
       <ErrorBoundary>
@@ -203,10 +214,6 @@ const router = createBrowserRouter([
         <NotFound />
       </ErrorBoundary>
     ),
-  },
-  {
-    path: "searchbarpage",
-    element: <SearchBarPage />,
   },
 ]);
 

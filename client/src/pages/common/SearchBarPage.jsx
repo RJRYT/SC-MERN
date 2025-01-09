@@ -4,7 +4,7 @@ import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { IoMdArrowBack } from "react-icons/io";
 import { MdNavigateNext } from "react-icons/md";
 
-export const SearchBarPage = () => {
+const SearchBarPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [recentSearches, setRecentSearches] = useState([]);
 
@@ -93,3 +93,5 @@ export const SearchBarPage = () => {
     </div>
   );
 };
+
+export default SearchBarPage;

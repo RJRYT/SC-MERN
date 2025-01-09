@@ -4,7 +4,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useState } from "react";
 import { CiLock } from "react-icons/ci";
 
-export const CreateNewPassword = () => {
+const CreateNewPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -110,3 +110,5 @@ export const CreateNewPassword = () => {
     </main>
   );
 };
+
+export default CreateNewPassword;
