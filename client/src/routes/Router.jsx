@@ -23,6 +23,7 @@ const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
 const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
 const Notification = lazy(() => import("./../pages/notification/Notification"));
 const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
+const Category = lazy(() => import("../pages/root/Category"));
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -201,6 +202,17 @@ const router = createBrowserRouter([
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <HelpCenter />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "Category",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Category />
         </Suspense>
       </ErrorBoundary>
     ),
