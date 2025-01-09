@@ -81,6 +81,7 @@ const Login = () => {
           Sign In
           <FaCircleArrowRight className="absolute right-2 text-5xl p-1" />
         </button>
+        
       </div>
 
       {/* Social Login */}

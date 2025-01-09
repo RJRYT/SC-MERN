@@ -34,10 +34,10 @@ const HeaderChat = () => {
 
 
             </div>
-            <div className= 'bg-gray-bg w-full  flex justify-center p-6 sm-only:mb-4'>
+            <div className= 'bg-gray-bg w-full  flex justify-center p-6 sm-only:mb-4 '>
 
-                <div className=' bg-dim-gray  flex items-center rounded-3xl w-1/2 p-1 sm-only:w-full'>
-                    <button  className={`w-1/2 rounded-3xl p-4 font-bold  text-lg ${activeTab === 'chat' ? 'bg-white text-text-purple' : 'text-white'} sm-only:h-12 flex justify-center items-center`}
+                <div className=' bg-dim-gray  flex items-center rounded-3xl w-1/2 p-1 sm-only:w-full '>
+                    <button  className={`w-1/2 rounded-3xl p-4 font-bold  text-lg ${activeTab === 'chat' ? 'bg-white text-text-purple' : 'text-white'} sm-only:h-12 flex justify-center items-center ` }
                         onClick={() => setActiveTab('chat')}>
                         Chat
                     </button>
