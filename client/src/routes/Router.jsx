@@ -1,33 +1,34 @@
-import React, { lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { lazy, Suspense } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const SignUp = lazy(() => import("../pages/auth/Signup"));
-const Login = lazy(() => import("../pages/auth/Login"));
-const OtpVerification = lazy(() => import("../pages/auth/OtpVerification"));
-const SplashScreen = lazy(() => import("../pages/common/SplashScreen"));
-const AllowLocation = lazy(() => import("../pages/auth/AllowLocation"));
-const AccessDenied = lazy(() => import("../pages/common/AccessDenied"));
-const NotFound = lazy(() => import("../pages/common/notFound"));
-const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
-const Profile = lazy(() => import("../pages/dashboard/Profile"));
-const Settings = lazy(() => import("../pages/dashboard/Settings"));
-const Terms = lazy(() => import("../pages/common/Terms"));
-const About = lazy(() => import("../pages/common/About"));
-const Notification = lazy(() => import("../pages/common/Notification"));
-const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
-const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
+const SignUp = lazy(() => import('../pages/auth/Signup'));
+const Login = lazy(() => import('../pages/auth/Login'));
+const OtpVerification = lazy(() => import('../pages/auth/OtpVerification'));
+const SplashScreen = lazy(() => import('../pages/common/SplashScreen'));
+const AllowLocation = lazy(() => import('../pages/auth/AllowLocation'));
+const AccessDenied = lazy(() => import('../pages/common/AccessDenied'));
+const NotFound = lazy(() => import('../pages/common/notFound'));
+const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
+const Profile = lazy(() => import('../pages/dashboard/Profile'));
+const Settings = lazy(() => import('../pages/dashboard/Settings'));
+const Terms = lazy(() => import('../pages/common/Terms'));
+const About = lazy(() => import('../pages/common/About'));
+const Notification = lazy(() => import('../pages/common/Notification'));
+const FillProfile = lazy(() => import('../pages/auth/FillProfile'));
+const HelpCenter = lazy(() => import('../pages/helpcenter/HelpCenter'));
 const CongratulationsPage = lazy(() =>
-  import("../pages/auth/CongratulationPage")
+  import('../pages/auth/CongratulationPage')
 );
+const ForgotPage = lazy(() => import('../pages/auth/ForgotPassword'));
 
-import ErrorElement from "../pages/common/ErrorElement";
-import ErrorBoundary from "../pages/common/ErrorBoundary";
-import LoadingSpinner from "../components/common/LoadingSpinner";
+import ErrorElement from '../pages/common/ErrorElement';
+import ErrorBoundary from '../pages/common/ErrorBoundary';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 const router = createBrowserRouter([
   {
     index: true,
-    path: "",
+    path: '',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "signup",
+    path: 'signup',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "login",
+    path: 'login',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "allowlocation",
+    path: 'allowlocation',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "about",
+    path: 'about',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "terms",
+    path: 'terms',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -93,7 +94,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "notification",
+    path: 'notification',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -104,7 +105,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "fillprofile",
+    path: 'fillprofile',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -115,7 +116,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "congratulationpage",
+    path: 'congratulationpage',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -126,7 +127,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "otpverification",
+    path: 'otpverification',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -137,7 +138,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "help",
+    path: 'help',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
@@ -148,22 +149,34 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "dashboard",
+    path: 'forgotpassword',
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner></LoadingSpinner>}>
+          <ForgotPage></ForgotPage>
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement></ErrorElement>,
+  },
+  {
+    path: 'dashboard',
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <Dashboard />
         </Suspense>
       </ErrorBoundary>
-    ), // Example parent route
+    ),
+    // Example parent route
     ErrorBoundary: <ErrorElement />,
     children: [
-      { path: "profile", element: <Profile /> },
-      { path: "settings", element: <Settings /> },
+      { path: 'profile', element: <Profile /> },
+      { path: 'settings', element: <Settings /> },
     ],
   },
   {
-    path: "accessdenied",
+    path: 'accessdenied',
     element: (
       <ErrorBoundary>
         <AccessDenied />
@@ -171,7 +184,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "*",
+    path: '*',
     element: (
       <ErrorBoundary>
         <NotFound />
