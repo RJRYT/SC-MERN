@@ -13,6 +13,9 @@ import all from '../../assets/pngtree-bento-like-menu-black-glyph-ui-icon-expand
 const Category = () => {
   return (
     <>
+      <div className="bg-[#d9d9db] flex justify-center">
+        <div className="bg-black h-20 md:w-3/4 xl:2/5 2xl:w-2/5 w-full"></div>
+      </div>
       <div className="bg-[#d9d9db] h-fit flex justify-center">
         <div className="mt-10 w-3/4  h-fit grid grid-cols-[1fr_1fr] sm:grid-cols-[1fr_1fr_1fr] gap-10 2xl:w-2/5 justify-items-center ">
           <Card heading="ALL" img={all}></Card>
