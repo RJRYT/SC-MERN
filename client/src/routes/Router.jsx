@@ -23,6 +23,7 @@ const CongratulationsPage = lazy(() =>
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import Home from "../pages/dashboard/Home";
 
 const router = createBrowserRouter([
   {
@@ -159,6 +160,7 @@ const router = createBrowserRouter([
     ErrorBoundary: <ErrorElement />,
     children: [
       { path: "profile", element: <Profile /> },
+      { path: "home", element: <Home /> },
       { path: "settings", element: <Settings /> },
     ],
   },
