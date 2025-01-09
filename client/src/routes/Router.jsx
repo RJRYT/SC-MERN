@@ -19,10 +19,10 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
 const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
 const Notification = lazy(() => import("./../pages/notification/Notification"));
 const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
-
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -174,6 +174,28 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "newpassword",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CreateNewPassword />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "searchbarpage",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <SearchBarPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "help",
     element: (
       <ErrorBoundary>
@@ -185,6 +207,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "forgotpassword",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner></LoadingSpinner>}>
+          <ForgotPage></ForgotPage>
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement></ErrorElement>,
+  },
+  {
     path: "dashboard",
     element: (
       <ErrorBoundary>
@@ -192,7 +225,8 @@ const router = createBrowserRouter([
           <Dashboard />
         </Suspense>
       </ErrorBoundary>
-    ), // Example parent route
+    ),
+    // Example parent route
     ErrorBoundary: <ErrorElement />,
     children: [
       { path: "profile", element: <Profile /> },
