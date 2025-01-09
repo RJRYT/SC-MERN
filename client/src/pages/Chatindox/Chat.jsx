@@ -16,7 +16,7 @@ const messages = [
 const Chat = () => {
   return (
     <div className='bg-gray-bg flex flex-col p-4 sm-only:p-4 sm-only:-mt-5'>
-      <div className='w-1/2 mx-auto py-4  bg-white rounded-2xl shadow sm-only:w-full '>
+      <div className='w-1/2 mx-auto py-5   bg-white rounded-2xl shadow sm-only:w-full '>
         {messages.map((msg, index) => (
           <Link to={"help"} key={index} >
             <div className='flex flex-row items-center p-6 hover:bg-gray-200 sm-only:-my-3'>

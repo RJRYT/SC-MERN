@@ -27,7 +27,7 @@ const iconMap = {
 const Call = () => {
   return (
     <div className='flex flex-col p-4 bg-gray-bg sm-only:p-4  sm-only:-mt-5'>
-      <div className='w-1/2 mx-auto py-4 bg-white rounded-2xl shadow sm-only:w-full'>
+      <div className='w-1/2 mx-auto py-5 bg-white rounded-2xl shadow sm-only:w-full'>
         {calls.map((call, index) => (
           <div key={index}>
             <Link to={"call-details"} className='flex flex-row items-center p-6 hover:bg-gray-200  sm-only:-my-3'>
@@ -36,13 +36,13 @@ const Call = () => {
               </div>
               <div className='flex flex-col ml-4 '>
                 <Typography variant='h6' className='text-dark-purple'>{call.name}</Typography>
-                <div className='flex flex-row gap-2 items-center  '>
+                <div className='flex flex-row gap-2 items-center '>
                   <div>
                     {iconMap[call.type]}
                   </div>
-                  <Typography variant='body2' className='text-chat-call  sm-only:-mx-1'>{call.type}</Typography>
-                  <div className='border-r-2 border-chat-call mx-2 h-4 pt-1' />
-                  <Typography variant='body2' className='text-chat-call  sm-only:-mx-1'>{call.date}</Typography>
+                  <Typography variant='body2' className='text-chat-call  sm-only:-mx-1 sm-only:text-sm'>{call.type}</Typography>
+                  <div className='border-r-2 border-chat-call mx-2 h-4 pt-1 sm-only:text-sm' />
+                  <Typography variant='body2' className='text-chat-call  sm-only:-mx-1 sm-only:text-sm'>{call.date}</Typography>
                 </div>
               </div>
               <div className='ml-auto'>

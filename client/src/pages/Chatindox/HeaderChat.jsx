@@ -13,7 +13,7 @@ const HeaderChat = () => {
     const [activeTab, setActiveTab] = useState('chat');
     return (
         
-        <div className=''>
+        <div>
             <div className='bg-dark-purple text-white p-6 pt-12 h-28 flex items-center justify-between'>
                 <button className='rounded-full border-2 border-white flex justify-center items-center p-2 '>
                     <IoIosArrowBack className="text-white text-3xl sm-only:text-2xl" />
@@ -34,9 +34,9 @@ const HeaderChat = () => {
 
 
             </div>
-            <div className= 'bg-gray-bg w-full h-32 flex justify-center p-6 sm-only:mb-4'>
+            <div className= 'bg-gray-bg w-full  flex justify-center p-6 sm-only:mb-4'>
 
-                <div className=' bg-dim-gray  flex items-center rounded-3xl w-1/2 px-2 py-3 border-2 sm-only:w-full'>
+                <div className=' bg-dim-gray  flex items-center rounded-3xl w-1/2 p-1 sm-only:w-full'>
                     <button  className={`w-1/2 rounded-3xl p-4 font-bold  text-lg ${activeTab === 'chat' ? 'bg-white text-text-purple' : 'text-white'} sm-only:h-12 flex justify-center items-center`}
                         onClick={() => setActiveTab('chat')}>
                         Chat

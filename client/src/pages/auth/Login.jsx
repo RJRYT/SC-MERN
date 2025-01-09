@@ -8,6 +8,7 @@ import logo from "../../assets/images/logo.png";
 import googleLogo from "../../assets/images/googlelogo.png";
 import appleLogo from "../../assets/images/applelogo.png";
 
+
 const Login = () => {
   const [show, setShow] = useState(false);
 
