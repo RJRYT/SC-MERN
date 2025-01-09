@@ -18,7 +18,10 @@ export const router = createBrowserRouter([
     path: "notification",
     element: <Notification />,
   },
-  
+  {
+    path: "cakeDelivery",
+    element: <CakeDelivery/>,
+  },
   {
     path: "/",
     errorElement: <ErrorPage />,

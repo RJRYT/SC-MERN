@@ -4,21 +4,12 @@ import { IoTicketOutline } from "react-icons/io5";
 import { TiCreditCard } from "react-icons/ti";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import Header from "../../components/header/Header";
 
 function Notification() {
   return (
     <>
-      {/* Header Section */}
-      <div className="bg-[#1d1f2a] text-white py-4">
-  <div className="flex items-center justify-start max-w-lg lg:max-w-2xl  px-4 sm:px-6">
-    <button className="border border-white rounded-full text-2xl p-2">
-      <MdOutlineArrowBackIos />
-    </button>
-    <h1 className="text-base lg:text-xl font-bold ml-4">
-      NOTIFICATIONS
-    </h1>
-  </div>
-</div>
+      <Header title="NOTIFICATION" showBackButton={true}/>
 
 
       {/* Notifications Section */}
