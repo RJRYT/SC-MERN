@@ -123,6 +123,17 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "Category",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Category />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "forgotpassword",
     element: <WrappedComponent element={<ForgotPage />} />,
     errorElement: <ErrorElement></ErrorElement>,
