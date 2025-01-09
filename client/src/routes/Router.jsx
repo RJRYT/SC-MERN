@@ -25,7 +25,8 @@ import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
 import { CreateNewPassword } from "../pages/root/CreateNewPassword";
-import Notification from "./../pages/notification/Notification";;
+import Notification from "./../pages/notification/Notification";
+import { SearchBarPage } from "../pages/root/SearchBarPage";
 
 const router = createBrowserRouter([
   {
@@ -202,6 +203,10 @@ const router = createBrowserRouter([
         <NotFound />
       </ErrorBoundary>
     ),
+  },
+  {
+    path: "searchbarpage",
+    element: <SearchBarPage />,
   },
 ]);
 
