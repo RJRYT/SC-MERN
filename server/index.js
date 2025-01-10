@@ -1,9 +1,14 @@
 import express from "express";
 import "dotenv/config";
-import apiRouter from './src/routes'
-//import routes from "./src/routes/index"
+import apiRouter from "./src/routes/index.js";
+import { connectdb } from "./src/config/db.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+connectdb();
 
 // PORT
 const port = process.env.PORT || 3000;
@@ -14,8 +19,7 @@ app.get("/", (req, res) => {
 });
 
 // Middleware
-app.use("/api",apiRouter);
-
+app.use("/api", apiRouter);
 
 // server is running.
 app.listen(port, () => {
