@@ -129,6 +129,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement></ErrorElement>,
   },
   {
+    path: "cakeDelivery",
+    element: <WrappedComponent element={<CakeDelivery/>} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+  {
     path: "dashboard",
     element: <WrappedComponent element={<Dashboard />} />,
     // Example parent route
