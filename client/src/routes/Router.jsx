@@ -13,167 +13,166 @@ const Profile = lazy(() => import("../pages/dashboard/Profile"));
 const Settings = lazy(() => import("../pages/dashboard/Settings"));
 const Terms = lazy(() => import("../pages/common/Terms"));
 const About = lazy(() => import("../pages/common/About"));
-const Notification = lazy(() => import("../pages/common/Notification"));
+const NotificationSett = lazy(() => import("../pages/common/Notification"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
 const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+
 import Inbox from "../pages/root/Inbox";
+const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
+const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
+const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
+const Notification = lazy(() => import("./../pages/notification/Notification"));
+const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
+const Category = lazy(() => import("../pages/root/Category"));
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
+import Transactions from "../pages/transactions/Transactions";
+const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
+const Home = lazy(() => import("../pages/dashboard/Home"))
+
+const WrappedComponent = ({ element }) => (
+  <ErrorBoundary>
+    <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
+  </ErrorBoundary>
+);
+
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
+
+
 const router = createBrowserRouter([
   {
     index: true,
     path: "",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <SplashScreen />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<SplashScreen />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "signup",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <SignUp />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<SignUp />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "login",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Login />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<Login />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "allowlocation",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <AllowLocation />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<AllowLocation />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "about",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <About />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<About />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "terms",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Terms />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<Terms />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "notification",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Notification />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<NotificationSett />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "notification2",
+    element: <WrappedComponent element={<Notification />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "fillprofile",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <FillProfile />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<FillProfile />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "congratulationpage",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <CongratulationsPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<CongratulationsPage />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "otpverification",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <OtpVerification />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<OtpVerification />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "newpassword",
+    element: <WrappedComponent element={<CreateNewPassword />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "searchbarpage",
+    element: <WrappedComponent element={<SearchBarPage />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "newpassword",
+    element: <WrappedComponent element={<CreateNewPassword />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "searchbarpage",
+    element: <WrappedComponent element={<SearchBarPage />} />,
     errorElement: <ErrorElement />,
 
   },
   {
     path:"inbox",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-        <Inbox/>
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<Inbox />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "help",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <HelpCenter />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<HelpCenter />} />,
     errorElement: <ErrorElement />,
   },
   {
+    path: "providerprofile",
+    element:  <WrappedComponent element={<ProviderProfile />} />,
+    errorElement: <ErrorElement />,
+  },
+    {
+    path: "Category",
+    element: <WrappedComponent element={<Category />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "forgotpassword",
+    element: <WrappedComponent element={<ForgotPage />} />,
+    errorElement: <ErrorElement></ErrorElement>,
+  },
+  {
+    path: "cakeDelivery",
+    element: <WrappedComponent element={<CakeDelivery/>} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+  {
+    path: "transactions",
+    element: <WrappedComponent element={<Transactions/>} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+  {
     path: "dashboard",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Dashboard />
-        </Suspense>
-      </ErrorBoundary>
-    ), // Example parent route
+    element: <WrappedComponent element={<Dashboard />} />,
+    // Example parent route
     ErrorBoundary: <ErrorElement />,
     children: [
       { path: "profile", element: <Profile /> },
+      { path: "home", element: <Home /> },
       { path: "settings", element: <Settings /> },
     ],
+  },
+  {
+    path: "payment",
+    element: <WrappedComponent element={<PaymentReceipt/>}/>,
+    errorElement: <ErrorElement />,
   },
   {
     path: "accessdenied",
