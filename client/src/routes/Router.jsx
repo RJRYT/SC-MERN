@@ -19,6 +19,8 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+
+import Inbox from "../pages/root/Inbox";
 const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
 const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
 const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
@@ -118,6 +120,12 @@ const router = createBrowserRouter([
   {
     path: "searchbarpage",
     element: <WrappedComponent element={<SearchBarPage />} />,
+    errorElement: <ErrorElement />,
+
+  },
+  {
+    path:"inbox",
+    element: <WrappedComponent element={<Inbox />} />,
     errorElement: <ErrorElement />,
   },
   {
