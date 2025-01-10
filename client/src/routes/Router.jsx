@@ -19,6 +19,7 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
 const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
 const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
 const Notification = lazy(() => import("./../pages/notification/Notification"));
@@ -28,14 +29,19 @@ const Category = lazy(() => import("../pages/root/Category"));
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-import Home from "../pages/dashboard/Home";
+
 import Transactions from "../pages/transactions/Transactions";
 const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
+const Home = lazy(() => import("../pages/dashboard/Home"))
+
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
   </ErrorBoundary>
 );
+
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
+
 
 const router = createBrowserRouter([
   {
@@ -120,6 +126,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "providerprofile",
+    element:  <WrappedComponent element={<ProviderProfile />} />,
+    errorElement: <ErrorElement />,
+  },
+    {
     path: "Category",
     element: <WrappedComponent element={<Category />} />,
     errorElement: <ErrorElement />,
@@ -148,8 +159,12 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "home", element: <Home /> },
       { path: "settings", element: <Settings /> },
-
     ],
+  },
+  {
+    path: "payment",
+    element: <WrappedComponent element={<PaymentReceipt/>}/>,
+    errorElement: <ErrorElement />,
   },
   {
     path: "accessdenied",
