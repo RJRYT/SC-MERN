@@ -7,6 +7,7 @@ import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import googleLogo from "../../assets/images/googlelogo.png";
 import appleLogo from "../../assets/images/applelogo.png";
+import CustomButton from '../../components/common/CustomButton'
 
 
 const Login = () => {
@@ -81,6 +82,7 @@ const Login = () => {
           Sign In
           <FaCircleArrowRight className="absolute right-2 text-5xl p-1" />
         </button>
+        
         
       </div>
 
