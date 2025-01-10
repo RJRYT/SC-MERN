@@ -28,17 +28,18 @@ const Category = lazy(() => import("../pages/root/Category"));
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-<<<<<<< Updated upstream
-import Home from "../pages/dashboard/Home";
+
+const Home = lazy(() => import("../pages/dashboard/Home"))
+
 
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
   </ErrorBoundary>
 );
-=======
+
 const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
->>>>>>> Stashed changes
+
 
 const router = createBrowserRouter([
   {
@@ -151,13 +152,7 @@ const router = createBrowserRouter([
   },
   {
     path: "payment",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <PaymentReceipt />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<PaymentReceipt/>}/>,
     errorElement: <ErrorElement />,
   },
   {
