@@ -19,7 +19,12 @@ module.exports = withMT({
         "gray-bg":"#d9d9db",
         'custom-dark-purple': 'RGB(29, 31, 42)',
         'custom-white' :'RGB(255, 255, 255)',
-        'buton-white':'#736a68'
+        'buton-white':'#736a68',
+        'whites':'#e8f1ff',
+        'custom-bg':'#f5f9ff'
+      },
+      borderRadius:{
+          'custom':'2px',
       },
         boxShadow: {
         'custom-dark': '0 4px 8px rgba(0, 0, 0, 0.5)',
