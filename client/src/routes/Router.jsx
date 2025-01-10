@@ -20,6 +20,11 @@ const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
 const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
+const PaymentCongratulation = lazy(() =>
+  import("../pages/common/PaymentCongratulation")
+);
+const AddNewCard = lazy(() => import("../pages/common/AddNewCard"));
+const PaymentMethods = lazy(() => import("../pages/common/PaymentMethods"));
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -154,6 +159,40 @@ const router = createBrowserRouter([
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
           <ProviderProfile />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+
+  {
+    path: "paymentcongratulation",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <PaymentCongratulation />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "paymentmethods",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <PaymentMethods />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "addnewcards",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <AddNewCard />
         </Suspense>
       </ErrorBoundary>
     ),
