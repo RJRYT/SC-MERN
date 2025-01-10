@@ -19,6 +19,7 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -147,6 +148,18 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorElement />,
   },
+  {
+    path: "providerprofile",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <ProviderProfile />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+
   {
     path: "dashboard",
     element: (
