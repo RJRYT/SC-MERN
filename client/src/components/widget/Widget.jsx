@@ -6,9 +6,12 @@ import { BsQuestionCircleFill } from "react-icons/bs";
 import { RiPagesFill } from "react-icons/ri";
 const Widget = () => {
   return (
-    <div className='flex justify-center items-center w-[300px] py-2 text-2xl px-[5px] gap-9 bg-[#736a68] rounded-xl text-white shadow-bottom '>
+    <div className='fixed bottom-5 left-1/2 transform -translate-x-1/2 md:hidden lg:hidden sm:block'>
+      <div className='flex justify-center items-center w-[355px] h-[50px] py-2 text-3xl px-[5px] space-x-8 bg-[#736a68] rounded-xl text-white shadow-bottom '>
 <IoGrid/><FaBookBookmark/><RiPagesFill/><FaPlus/><BsQuestionCircleFill/>
     </div>
+    </div>
+    
   )
 }
 

@@ -30,8 +30,9 @@ import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
+import Transactions from "../pages/transactions/Transactions";
+const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
 const Home = lazy(() => import("../pages/dashboard/Home"))
-
 
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
@@ -145,6 +146,11 @@ const router = createBrowserRouter([
     ErrorBoundary: <ErrorElement />,
   },
   {
+    path: "transactions",
+    element: <WrappedComponent element={<Transactions/>} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+  {
     path: "dashboard",
     element: <WrappedComponent element={<Dashboard />} />,
     // Example parent route
@@ -153,7 +159,6 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "home", element: <Home /> },
       { path: "settings", element: <Settings /> },
-      
     ],
   },
   {
