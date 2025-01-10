@@ -28,6 +28,7 @@ const Category = lazy(() => import("../pages/root/Category"));
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+<<<<<<< Updated upstream
 import Home from "../pages/dashboard/Home";
 
 const WrappedComponent = ({ element }) => (
@@ -35,6 +36,9 @@ const WrappedComponent = ({ element }) => (
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
   </ErrorBoundary>
 );
+=======
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
+>>>>>>> Stashed changes
 
 const router = createBrowserRouter([
   {
@@ -142,7 +146,19 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "home", element: <Home /> },
       { path: "settings", element: <Settings /> },
+      
     ],
+  },
+  {
+    path: "payment",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <PaymentReceipt />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
   {
     path: "accessdenied",
