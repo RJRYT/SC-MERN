@@ -1,7 +1,6 @@
 
 import express from "express";
-import v1Router from './v1/index.js';
-
+import v1Router from './v1';
 
 const apiRouter = express.Router();
 

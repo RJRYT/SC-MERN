@@ -5,7 +5,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { IoIosArrowBack } from "react-icons/io";
-
+import { BellIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
 
 function CustomNavbar() {
   return (
