@@ -19,6 +19,7 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
 const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
 const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
 const Notification = lazy(() => import("./../pages/notification/Notification"));
@@ -124,6 +125,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "providerprofile",
+    element:  <WrappedComponent element={<ProviderProfile />} />,
+    errorElement: <ErrorElement />,
+  },
+    {
     path: "Category",
     element: <WrappedComponent element={<Category />} />,
     errorElement: <ErrorElement />,
