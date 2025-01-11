@@ -9,6 +9,7 @@ import { FillProfile } from "../pages/root/FillProfile";
 import { CongratulationsPage } from "../pages/root/CongratulationPage";
 
 import { SearchBarPage } from "../pages/root/SearchBarPage";
+import { Booking } from "../pages/root/Booking";
 
 export const router = createBrowserRouter([
   {
@@ -46,5 +47,9 @@ export const router = createBrowserRouter([
   {
     path: "searchbarpage",
     element: <SearchBarPage />,
+  },
+  {
+    path: "booking",
+    element: <Booking />,
   },
 ]);
