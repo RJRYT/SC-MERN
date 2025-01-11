@@ -16,7 +16,6 @@ const About = lazy(() => import("../pages/common/About"));
 const Notification = lazy(() => import("../pages/common/Notification"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
 const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
-import Complaint from '../pages/Complaint form/Complaint'
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
@@ -191,19 +190,7 @@ const router = createBrowserRouter([
       ),
       errorElement: <ErrorElement />,
     
-  },
-  {
-    path: "complaint",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Complaint />
-        </Suspense>
-      </ErrorBoundary>
-    ),
-    errorElement: <ErrorElement />,
-  
-},
+  }
  
 ]);
 
