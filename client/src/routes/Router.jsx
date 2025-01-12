@@ -35,6 +35,8 @@ import LoadingSpinner from "../components/common/LoadingSpinner";
 import Transactions from "../pages/transactions/Transactions";
 const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
 const Home = lazy(() => import("../pages/dashboard/Home"))
+const EditProfile = lazy(()=> import("../pages/auth/EditProfile"))
+
 
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
@@ -43,6 +45,7 @@ const WrappedComponent = ({ element }) => (
 );
 
 const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
+
 
 
 const router = createBrowserRouter([
@@ -156,6 +159,11 @@ const router = createBrowserRouter([
   {
     path: "transactions",
     element: <WrappedComponent element={<Transactions/>} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+  {
+    path: "editprofile",
+    element: <WrappedComponent element={<EditProfile/>} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
