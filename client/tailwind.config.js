@@ -17,6 +17,10 @@ module.exports = withMT({
         'custom-dark-purple': '#1d1f2a',
           "dark-purple": "#1d1f2a",
         "gray-bg":"#d9d9db",
+        "invoice":"#303972",
+        "table":"#303972",
+        "appointment":"#282827",
+        "conform":"#670200",
       },
         boxShadow: {
         'custom-dark': '0 4px 8px rgba(0, 0, 0, 0.5)',
