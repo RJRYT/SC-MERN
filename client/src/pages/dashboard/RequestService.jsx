@@ -21,7 +21,7 @@ const RequestService = () => {
   return (
     <>
       <div className="bg-black text-white h-20 flex items-center"></div>
-      <div className="bg-[#d9d9db] flex 2xl:h-[130vh] h-[150vh]">
+      <div className="bg-[#d9d9db] flex 2xl:h-[130vh] h-[175vh]">
         <div className=" w-11/12 max-w-md  mx-auto flex flex-col gap-5 mt-10">
           <div className="flex gap-10 items-center">
             <div className="w-16">
@@ -62,7 +62,7 @@ const RequestService = () => {
           </div>
           <div className="flex flex-col gap-2">
             <span>From</span>
-            <div className="flex items-center gap-10">
+            <div className="flex items-center gap-10 flex-col sm:flex-row">
               <div className="bg-white h-14 rounded-lg relative flex items-center">
                 <Popover placement="bottom">
                   <PopoverHandler>
@@ -79,7 +79,7 @@ const RequestService = () => {
                       selected={date}
                       onSelect={setDate}
                       showOutsideDays
-                      className="border-0"
+                      className="border-0 "
                       classNames={{
                         caption:
                           'flex justify-center py-2 mb-4 relative items-center',
@@ -127,12 +127,12 @@ const RequestService = () => {
                 <input
                   type="time"
                   value={value}
-                  className="h-14 w-52 rounded-lg pl-5 pr-5"
+                  className="h-14  w-52   rounded-lg pl-5 pr-5"
                 ></input>
               </div>
             </div>
             <span>To</span>
-            <div className="flex items-center gap-10">
+            <div className="flex items-center gap-10 flex-col sm:flex-row">
               <div className="bg-white h-14 rounded-lg relative flex items-center">
                 <Popover placement="bottom">
                   <PopoverHandler>
