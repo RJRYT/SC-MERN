@@ -17,7 +17,7 @@ function HeaderComponent() {
         </button>
         
         <h6 className={`text-center font-bold md:w-auto md:flex-grow-0 text-lg md:text-2xl md:absolute md:left-1/2 md:transform md:-translate-x-1/2 ${activeTab === 'contact' ? ' sm-only:gap-3 sm-only:mr-16':''}`}>
-          HELP CENTER
+          JOBS
         </h6>
 
         <div className="flex items-center space-x-4">
@@ -30,24 +30,31 @@ function HeaderComponent() {
         </div>
       </div>
 
-      <div className='bg-gray-300 w-full h-20 flex'>
-        <button
-          className={`w-1/2 p-4 ${activeTab === 'faq' ? 'bg-gray-bg text-black border-b-2 border-blue-900' : 'bg-white text-gray-600'}`}
-          onClick={() => setActiveTab('faq')}
-        >
-          FAQ
-        </button>
-        <button
-          className={`w-1/2 p-4 ${activeTab === 'contact' ? 'bg-bg-gray-bg text-black border-b-2 border-blue-900' : 'bg-white text-gray-600'}`}
-          onClick={() => setActiveTab('contact')}
-        >
-          CONTACT US
-        </button>
-      </div>
+      <div className="bg-btn-color w-full h-20 flex mt-10 rounded-full ">
+  <button
+    className={`w-1/2 px-6 py-2 m-2   ${
+      activeTab === 'ongoing'
+        ? 'bg-white text-black border-b-2 rounded-full border-blue-900'
+        : 'bg-white text-gray-600 rounded-full'
+    }`}
+    onClick={() => setActiveTab('ongoing')}
+  >
+    Ongoing
+  </button>
+  <button
+    className={`w-1/2 px-6 py-2 m-2 ${
+      activeTab === 'complete'
+        ? 'bg-white text-black border-b-2 rounded-full border-blue-900'
+        : 'bg-white text-gray-600 rounded-full'
+    }`}
+    onClick={() => setActiveTab('complete')}
+  >
+    Completed
+  </button>
+</div>
 
-      <div>
-        {activeTab === 'faq' ? <FaqPage /> : <ContactUs />}
-      </div>
+
+      
     </div>
   );
 }

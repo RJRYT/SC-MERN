@@ -23,6 +23,7 @@ const CongratulationsPage = lazy(() =>
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import Jobs from "../pages/common/Jobs";
 
 const router = createBrowserRouter([
   {
@@ -175,6 +176,14 @@ const router = createBrowserRouter([
     element: (
       <ErrorBoundary>
         <NotFound />
+      </ErrorBoundary>
+    ),
+  },
+  {
+    path: "jobs",
+    element: (
+      <ErrorBoundary>
+        <Jobs/>
       </ErrorBoundary>
     ),
   },

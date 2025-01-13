@@ -17,6 +17,14 @@ module.exports = withMT({
         'custom-dark-purple': '#1d1f2a',
           "dark-purple": "#1d1f2a",
         "gray-bg":"#d9d9db",
+        "nav-white":"#ffffff",
+        "background-color":"#d9d9db",
+        "card-color":"#137518",
+        "cross-color":"#b3b3b3",
+        "side-color":"#c1bbec",
+        "btn-color":"#736a68"
+
+        
       },
         boxShadow: {
         'custom-dark': '0 4px 8px rgba(0, 0, 0, 0.5)',
