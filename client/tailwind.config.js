@@ -24,7 +24,13 @@ module.exports = withMT({
         "hr-color":"#eeeeee",
         "plus":"rgb(51,45,161)",
         "chat-call":"#545454",
-     
+        'custom-white' :'RGB(255, 255, 255)',
+        'buton-white':'#736a68',
+        'whites':'#e8f1ff',
+        'custom-bg':'#f5f9ff'
+      },
+      borderRadius:{
+          'custom':'2px',
       },
         boxShadow: {
         'custom-dark': '0 4px 8px rgba(0, 0, 0, 0.5)',
