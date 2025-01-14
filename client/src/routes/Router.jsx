@@ -37,6 +37,7 @@ const Category = lazy(() => import("../pages/root/Category"));
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import HeaderChat from "../pages/Chatindox/HeaderChat";
 
 const Transactions = lazy(() => import("../pages/transactions/Transactions"));
 const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
@@ -249,6 +250,19 @@ const router = createBrowserRouter([
       </ErrorBoundary>
     ),
   },
+  {
+      path: "chat",
+      element: (
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            <HeaderChat />
+          </Suspense>
+        </ErrorBoundary>
+      ),
+      errorElement: <ErrorElement />,
+    
+  }
+ 
 ]);
 
 export default function Router() {
