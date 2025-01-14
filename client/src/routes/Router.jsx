@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { lazy, Suspense } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const SignUp = lazy(() => import("../pages/auth/Signup"));
 const Login = lazy(() => import("../pages/auth/Login"));
@@ -17,8 +17,9 @@ const NotificationSett = lazy(() => import("../pages/common/Notification"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
 const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
-  import("../pages/auth/CongratulationPage")
+  import('../pages/auth/CongratulationPage')
 );
+const RequestService = lazy(() => import('../pages/dashboard/RequestService'));
 
 import Inbox from "../pages/root/Inbox";
 const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
@@ -234,7 +235,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "*",
+    path: '*',
     element: (
       <ErrorBoundary>
         <NotFound />
