@@ -44,6 +44,11 @@ const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
 const Booking = lazy(() => import("../pages/root/Booking"));
 const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
 
+const EditProfile = lazy(()=> import("../pages/auth/EditProfile"))
+
+
+
+
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
@@ -152,6 +157,13 @@ const router = createBrowserRouter([
     element: <WrappedComponent element={<Transactions />} />,
     ErrorBoundary: <ErrorElement />,
   },
+  
+  {
+    path: "editprofile",
+    element: <WrappedComponent element={<EditProfile/>} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+
   {
     path: "requestservice",
     element: <WrappedComponent element={<RequestService />} />,

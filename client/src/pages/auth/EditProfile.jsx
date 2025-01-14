@@ -1,4 +1,3 @@
-import { CiCircleChevLeft } from "react-icons/ci";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { CiImageOn } from "react-icons/ci";
 import { TfiEmail } from "react-icons/tfi";
@@ -7,27 +6,25 @@ import "react-day-picker/dist/style.css";
 import { useState } from "react";
 import { format } from "date-fns";
 import { MdOutlineDateRange } from "react-icons/md";
+import Header from "../../components/header/Header";
 
 const EditProfile = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
 
   const handleDateInputClick = () => {
-    setShowCalendar((prev) => !prev); 
+    setShowCalendar((prev) => !prev);
   };
 
   const handleDateSelect = (date) => {
-    setSelectedDate(date); 
+    setSelectedDate(date);
     setShowCalendar(false);
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F5F9FF]">
       {/* Header Section */}
-      <div className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4">
-        <CiCircleChevLeft size={30} color="white" className="mr-4 cursor-pointer" />
-        <h3 className="text-white text-[20px] font-semibold">Edit Profile</h3>
-      </div>
+      <Header title={"Edit Profile"} />
 
       {/* Main Container */}
       <div className="flex flex-col items-center py-8 px-4 md:px-8">
@@ -65,31 +62,30 @@ const EditProfile = () => {
             />
           </div>
 
-     {/* Date of Birth */}
-<div className="relative">
-  <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black">
-    <MdOutlineDateRange size={24} />
-  </div>
-  <input
-    id="dob"
-    type="text"
-    readOnly
-    value={selectedDate ? format(selectedDate, "PPP") : ""}
-    placeholder="Date of Birth"
-    className="w-full bg-white text-gray-800 p-4 rounded-lg shadow-md placeholder-black cursor-pointer focus:outline-none focus:ring-2  focus:ring-[#35384a] pl-12"
-    onClick={handleDateInputClick}
-  />
-  {showCalendar && (
-    <div className="absolute z-10 bg-white rounded-lg shadow-lg mt-2">
-      <DayPicker
-        mode="single"
-        selected={selectedDate}
-        onSelect={handleDateSelect}
-      />
-    </div>
-  )}
-</div>
-
+          {/* Date of Birth */}
+          <div className="relative">
+            <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black">
+              <MdOutlineDateRange size={24} />
+            </div>
+            <input
+              id="dob"
+              type="text"
+              readOnly
+              value={selectedDate ? format(selectedDate, "PPP") : ""}
+              placeholder="Date of Birth"
+              className="w-full bg-white text-gray-800 p-4 rounded-lg shadow-md placeholder-black cursor-pointer focus:outline-none focus:ring-2  focus:ring-[#35384a] pl-12"
+              onClick={handleDateInputClick}
+            />
+            {showCalendar && (
+              <div className="absolute z-10 bg-white rounded-lg shadow-lg mt-2">
+                <DayPicker
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={handleDateSelect}
+                />
+              </div>
+            )}
+          </div>
 
           {/* Email */}
           <div className="relative">
@@ -142,9 +138,8 @@ const EditProfile = () => {
             </select>
           </div>
 
-
-   {/* Nickname */}
-   <div className="relative">
+          {/* Nickname */}
+          <div className="relative">
             <input
               id="nickname"
               type="text"
@@ -152,8 +147,6 @@ const EditProfile = () => {
               className="w-full bg-white text-gray-800 p-4 rounded-lg shadow-md placeholder-black focus:outline-none focus:ring-2 focus:ring-[#35384a]"
             />
           </div>
-
-
         </div>
 
         {/* Update Button */}
