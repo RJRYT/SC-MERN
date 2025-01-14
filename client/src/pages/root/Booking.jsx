@@ -31,7 +31,7 @@ const bookings = [
   },
 ];
 
-export const Booking = () => {
+const Booking = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white items-center">
       {/* Navbar */}
@@ -67,3 +67,5 @@ export const Booking = () => {
     </div>
   );
 };
+
+export default Booking;

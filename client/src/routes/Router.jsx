@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React, { lazy, Suspense } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const SignUp = lazy(() => import("../pages/auth/Signup"));
 const Login = lazy(() => import("../pages/auth/Login"));
@@ -17,11 +17,10 @@ const NotificationSett = lazy(() => import("../pages/common/Notification"));
 const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
 const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
-  import('../pages/auth/CongratulationPage')
+  import("../pages/auth/CongratulationPage")
 );
-const RequestService = lazy(() => import('../pages/dashboard/RequestService'));
-
-import Inbox from "../pages/root/Inbox";
+const RequestService = lazy(() => import("../pages/dashboard/RequestService"));
+const Inbox = lazy(() => import("../pages/root/Inbox"));
 const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
 const PaymentCongratulation = lazy(() =>
   import("../pages/common/PaymentCongratulation")
@@ -38,25 +37,18 @@ import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
-import Transactions from "../pages/transactions/Transactions";
+const Transactions = lazy(() => import("../pages/transactions/Transactions"));
 const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
-const Home = lazy(() => import("../pages/dashboard/Home"))
-const EditProfile = lazy(()=> import("../pages/auth/EditProfile"))
-
-
-import { SearchBarPage } from "../pages/root/SearchBarPage";
-import { Booking } from "../pages/root/Booking";
-
+const Home = lazy(() => import("../pages/dashboard/Home"));
+const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
+const Booking = lazy(() => import("../pages/root/Booking"));
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
 
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
   </ErrorBoundary>
 );
-
-const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
-
-
 
 const router = createBrowserRouter([
   {
@@ -126,18 +118,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "newpassword",
-    element: <WrappedComponent element={<CreateNewPassword />} />,
-    errorElement: <ErrorElement />,
-  },
-  {
-    path: "searchbarpage",
-    element: <WrappedComponent element={<SearchBarPage />} />,
-    errorElement: <ErrorElement />,
-
-  },
-  {
-    path:"inbox",
+    path: "inbox",
     element: <WrappedComponent element={<Inbox />} />,
     errorElement: <ErrorElement />,
   },
@@ -148,10 +129,10 @@ const router = createBrowserRouter([
   },
   {
     path: "providerprofile",
-    element:  <WrappedComponent element={<ProviderProfile />} />,
+    element: <WrappedComponent element={<ProviderProfile />} />,
     errorElement: <ErrorElement />,
   },
-    {
+  {
     path: "Category",
     element: <WrappedComponent element={<Category />} />,
     errorElement: <ErrorElement />,
@@ -163,57 +144,47 @@ const router = createBrowserRouter([
   },
   {
     path: "cakeDelivery",
-    element: <WrappedComponent element={<CakeDelivery/>} />,
+    element: <WrappedComponent element={<CakeDelivery />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
     path: "transactions",
-    element: <WrappedComponent element={<Transactions/>} />,
+    element: <WrappedComponent element={<Transactions />} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+  {
+    path: "requestservice",
+    element: <WrappedComponent element={<RequestService />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
     path: "editprofile",
-    element: <WrappedComponent element={<EditProfile/>} />,
+    element: <WrappedComponent element={<EditProfile />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
     path: "paymentcongratulation",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <PaymentCongratulation />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<PaymentCongratulation />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "booking",
+    element: <WrappedComponent element={<Booking />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "paymentmethods",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <PaymentMethods />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<PaymentMethods />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "addnewcards",
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <AddNewCard />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<AddNewCard />} />,
     errorElement: <ErrorElement />,
   },
-
   {
     path: "dashboard",
     element: <WrappedComponent element={<Dashboard />} />,
-    // Example parent route
     ErrorBoundary: <ErrorElement />,
     children: [
       { path: "profile", element: <Profile /> },
@@ -223,7 +194,7 @@ const router = createBrowserRouter([
   },
   {
     path: "payment",
-    element: <WrappedComponent element={<PaymentReceipt/>}/>,
+    element: <WrappedComponent element={<PaymentReceipt />} />,
     errorElement: <ErrorElement />,
   },
   {
@@ -235,16 +206,12 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '*',
+    path: "*",
     element: (
       <ErrorBoundary>
         <NotFound />
       </ErrorBoundary>
     ),
-  },
-  {
-    path: "booking",
-    element: <Booking />,
   },
 ]);
 
