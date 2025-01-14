@@ -22,6 +22,11 @@ const CongratulationsPage = lazy(() =>
 
 import Inbox from "../pages/root/Inbox";
 const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
+const PaymentCongratulation = lazy(() =>
+  import("../pages/common/PaymentCongratulation")
+);
+const AddNewCard = lazy(() => import("../pages/common/AddNewCard"));
+const PaymentMethods = lazy(() => import("../pages/common/PaymentMethods"));
 const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
 const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
 const Notification = lazy(() => import("./../pages/notification/Notification"));
@@ -166,6 +171,40 @@ const router = createBrowserRouter([
     element: <WrappedComponent element={<EditProfile/>} />,
     ErrorBoundary: <ErrorElement />,
   },
+  {
+    path: "paymentcongratulation",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <PaymentCongratulation />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "paymentmethods",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <PaymentMethods />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "addnewcards",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <AddNewCard />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
+  },
+
   {
     path: "dashboard",
     element: <WrappedComponent element={<Dashboard />} />,
