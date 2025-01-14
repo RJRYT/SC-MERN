@@ -9,7 +9,6 @@ import googleLogo from "../../assets/images/googlelogo.png";
 import appleLogo from "../../assets/images/applelogo.png";
 import CustomButton from '../../components/common/CustomButton'
 
-
 const Login = () => {
   const [show, setShow] = useState(false);
 
@@ -78,12 +77,7 @@ const Login = () => {
         </div>
 
         {/* Sign In Button */}
-        <button className="w-full rounded-full shadow-lg flex items-center justify-center h-[60px] bg-primary text-white text-xl font-bold relative">
-          Sign In
-          <FaCircleArrowRight className="absolute right-2 text-5xl p-1" />
-        </button>
-        
-        
+        <CustomButton title={"Sign In"} onClick={()=>alert("Alert")}/>
       </div>
 
       {/* Social Login */}
