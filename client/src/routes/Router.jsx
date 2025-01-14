@@ -43,6 +43,10 @@ const Home = lazy(() => import("../pages/dashboard/Home"))
 const EditProfile = lazy(()=> import("../pages/auth/EditProfile"))
 
 
+import { SearchBarPage } from "../pages/root/SearchBarPage";
+import { Booking } from "../pages/root/Booking";
+
+
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
@@ -236,6 +240,10 @@ const router = createBrowserRouter([
         <NotFound />
       </ErrorBoundary>
     ),
+  },
+  {
+    path: "booking",
+    element: <Booking />,
   },
 ]);
 
