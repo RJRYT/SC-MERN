@@ -48,6 +48,7 @@ const Home = lazy(() => import("../pages/dashboard/Home"));
 const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
 const Booking = lazy(() => import("../pages/root/Booking"));
 const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
+const FilterPage = lazy(() => import("../pages/auth/FilterPage"))
 const ServicePage = lazy(() => import("../pages/dashboard/servicepage"));
 
 const WrappedComponent = ({ element }) => (
@@ -199,6 +200,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "filterpage",
+    element: <WrappedComponent element={<FilterPage />} />,
+    errorElement: <ErrorElement />,
+  },
     path: "servicepage",
     element: <WrappedComponent element={<ServicePage />} />,
     errorElement: <ErrorElement />,
