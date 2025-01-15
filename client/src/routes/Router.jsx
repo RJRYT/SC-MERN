@@ -39,6 +39,8 @@ const InviteFriend = lazy(() => import("../pages/InviteFriend/InviteFriend"));
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+
+import Jobs from "../pages/common/Jobs";
 import Complaint from "../pages/complaint/complaint";
 
 const HeaderChat = lazy(() => import("../pages/Chatindox/HeaderChat"));
@@ -240,6 +242,12 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "jobs",
+    element: (
+      <ErrorBoundary>
+        <Jobs/>
+      </ErrorBoundary>
+    ),
     path: "complaint",
     element: (
       <ErrorBoundary>
