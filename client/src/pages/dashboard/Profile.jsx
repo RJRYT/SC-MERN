@@ -1,8 +1,8 @@
 import React from "react";
-
+import Widget from "../../components/widget/Widget";
 const Profile = () => {
   return (
-    <div className="p-6 bg-white shadow-md rounded-lg">
+    <div className="p-4 bg-white shadow-md rounded-lg">
       <h2 className="text-xl font-bold mb-4">Profile</h2>
       <p className="text-gray-600">
         This is the profile page where user details are displayed.
@@ -28,7 +28,12 @@ const Profile = () => {
           value="john.doe@example.com"
           readOnly
         />
+           
+
+   
       </div>
+     
+
     </div>
   );
 };
