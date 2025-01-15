@@ -33,6 +33,8 @@ const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
 const Notification = lazy(() => import("./../pages/notification/Notification"));
 const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
 const Category = lazy(() => import("../pages/root/Category"));
+const InviteFriend = lazy(() => import("../pages/InviteFriend/InviteFriend"));
+
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
@@ -124,6 +126,11 @@ const router = createBrowserRouter([
   {
     path: "inbox",
     element: <WrappedComponent element={<Inbox />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "inviteFriend",
+    element: <WrappedComponent element={<InviteFriend />} />,
     errorElement: <ErrorElement />,
   },
   {
@@ -232,7 +239,7 @@ const router = createBrowserRouter([
     element: (
       <ErrorBoundary>
         <Suspense fallback={<LoadingSpinner />}>
-          <Complaint/>
+          <Complaint />
         </Suspense>
       </ErrorBoundary>
     ),
