@@ -40,6 +40,7 @@ import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
+import Transactions from "../pages/transactions/Transactions";
 import Jobs from "../pages/common/Jobs";
 import Complaint from "../pages/complaint/complaint";
 
@@ -53,6 +54,15 @@ const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
 const FilterPage = lazy(() => import("../pages/auth/FilterPage"))
 const ServicePage = lazy(() => import("../pages/dashboard/servicepage"));
 
+
+const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
+const Home = lazy(() => import("../pages/dashboard/Home"));
+const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
+const ProfilePage = lazy(() => import("../pages/auth/ProfilePage"));
+const Review = lazy(() => import("../pages/auth/Review"));
+const Reviews = lazy(() => import("../pages/auth/Reviews"));
+
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
@@ -137,6 +147,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path:"review",
+    element: <WrappedComponent element={<Review />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path:"reviews",
+    element: <WrappedComponent element={<Reviews />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "help",
     element: <WrappedComponent element={<HelpCenter />} />,
     errorElement: <ErrorElement />,
@@ -166,6 +186,12 @@ const router = createBrowserRouter([
     element: <WrappedComponent element={<Transactions />} />,
     ErrorBoundary: <ErrorElement />,
   },
+  {
+    path: "profilepage",
+    element: <WrappedComponent element={<ProfilePage />} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+
   {
     path: "editprofile",
     element: <WrappedComponent element={<EditProfile />} />,
@@ -224,6 +250,11 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "settings", element: <Settings /> },
     ],
+  },
+  {
+    path: "payment",
+    element: <WrappedComponent element={<PaymentReceipt />} />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "accessdenied",
