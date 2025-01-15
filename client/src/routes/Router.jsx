@@ -43,6 +43,7 @@ const Home = lazy(() => import("../pages/dashboard/Home"));
 const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
 const Booking = lazy(() => import("../pages/root/Booking"));
 const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
+const FilterPage = lazy(() => import("../pages/auth/FilterPage"))
 
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
@@ -182,6 +183,12 @@ const router = createBrowserRouter([
     element: <WrappedComponent element={<AddNewCard />} />,
     errorElement: <ErrorElement />,
   },
+  {
+    path: "filterpage",
+    element: <WrappedComponent element={<FilterPage />} />,
+    errorElement: <ErrorElement />,
+  },
+  
   {
     path: "dashboard",
     element: <WrappedComponent element={<Dashboard />} />,
