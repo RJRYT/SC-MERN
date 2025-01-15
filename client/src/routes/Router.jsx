@@ -19,6 +19,7 @@ const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
 const CongratulationsPage = lazy(() =>
   import("../pages/auth/CongratulationPage")
 );
+
 const RequestService = lazy(() => import("../pages/dashboard/RequestService"));
 const Inbox = lazy(() => import("../pages/root/Inbox"));
 const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
@@ -32,11 +33,15 @@ const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
 const Notification = lazy(() => import("./../pages/notification/Notification"));
 const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
 const Category = lazy(() => import("../pages/root/Category"));
+const InviteFriend = lazy(() => import("../pages/InviteFriend/InviteFriend"));
+
 
 import ErrorElement from "../pages/common/ErrorElement";
 import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
+import Complaint from "../pages/complaint/complaint";
 
+const HeaderChat = lazy(() => import("../pages/Chatindox/HeaderChat"));
 const Transactions = lazy(() => import("../pages/transactions/Transactions"));
 const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
 const Home = lazy(() => import("../pages/dashboard/Home"));
@@ -44,6 +49,7 @@ const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
 const Booking = lazy(() => import("../pages/root/Booking"));
 const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
 const FilterPage = lazy(() => import("../pages/auth/FilterPage"))
+const ServicePage = lazy(() => import("../pages/dashboard/servicepage"));
 
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
@@ -124,6 +130,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path: "inviteFriend",
+    element: <WrappedComponent element={<InviteFriend />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "help",
     element: <WrappedComponent element={<HelpCenter />} />,
     errorElement: <ErrorElement />,
@@ -154,18 +165,23 @@ const router = createBrowserRouter([
     ErrorBoundary: <ErrorElement />,
   },
   {
-    path: "requestservice",
-    element: <WrappedComponent element={<RequestService />} />,
-    ErrorBoundary: <ErrorElement />,
-  },
-  {
     path: "editprofile",
     element: <WrappedComponent element={<EditProfile />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
+    path: "requestservice",
+    element: <WrappedComponent element={<RequestService />} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+  {
     path: "paymentcongratulation",
     element: <WrappedComponent element={<PaymentCongratulation />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "payment",
+    element: <WrappedComponent element={<PaymentReceipt />} />,
     errorElement: <ErrorElement />,
   },
   {
@@ -188,7 +204,15 @@ const router = createBrowserRouter([
     element: <WrappedComponent element={<FilterPage />} />,
     errorElement: <ErrorElement />,
   },
-  
+    path: "servicepage",
+    element: <WrappedComponent element={<ServicePage />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "chat",
+    element: <WrappedComponent element={<HeaderChat />} />,
+    errorElement: <ErrorElement />,
+  },
   {
     path: "dashboard",
     element: <WrappedComponent element={<Dashboard />} />,
@@ -198,11 +222,6 @@ const router = createBrowserRouter([
       { path: "home", element: <Home /> },
       { path: "settings", element: <Settings /> },
     ],
-  },
-  {
-    path: "payment",
-    element: <WrappedComponent element={<PaymentReceipt />} />,
-    errorElement: <ErrorElement />,
   },
   {
     path: "accessdenied",
@@ -219,6 +238,17 @@ const router = createBrowserRouter([
         <NotFound />
       </ErrorBoundary>
     ),
+  },
+  {
+    path: "complaint",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Complaint />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
 ]);
 
