@@ -35,7 +35,7 @@ const ReviewsPage = () => {
                   <CiCircleChevLeft size={28} color="white" />
                 </IconButton>
                 <Typography variant="h6" className="text-white font-semibold text-2xl m-2">
-                  Review
+                  Reviews
                 </Typography>
       </div>
 
