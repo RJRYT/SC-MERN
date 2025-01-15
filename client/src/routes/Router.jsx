@@ -33,18 +33,22 @@ import ErrorBoundary from "../pages/common/ErrorBoundary";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 
 import Transactions from "../pages/transactions/Transactions";
+
+
+
 const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
-const Home = lazy(() => import("../pages/dashboard/Home"))
-const EditProfile = lazy(()=> import("../pages/auth/EditProfile"))
+const Home = lazy(() => import("../pages/dashboard/Home"));
+const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
+const ProfilePage = lazy(() => import("../pages/auth/ProfilePage"));
+const Review = lazy(() => import("../pages/auth/Review"));
+const Reviews = lazy(() => import("../pages/auth/Reviews"));
 
-
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
   </ErrorBoundary>
 );
-
-const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
 
 
 
@@ -132,16 +136,26 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
+    path:"review",
+    element: <WrappedComponent element={<Review />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path:"reviews",
+    element: <WrappedComponent element={<Reviews />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "help",
     element: <WrappedComponent element={<HelpCenter />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "providerprofile",
-    element:  <WrappedComponent element={<ProviderProfile />} />,
+    element: <WrappedComponent element={<ProviderProfile />} />,
     errorElement: <ErrorElement />,
   },
-    {
+  {
     path: "Category",
     element: <WrappedComponent element={<Category />} />,
     errorElement: <ErrorElement />,
@@ -153,17 +167,23 @@ const router = createBrowserRouter([
   },
   {
     path: "cakeDelivery",
-    element: <WrappedComponent element={<CakeDelivery/>} />,
+    element: <WrappedComponent element={<CakeDelivery />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
     path: "transactions",
-    element: <WrappedComponent element={<Transactions/>} />,
+    element: <WrappedComponent element={<Transactions />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
+    path: "profilepage",
+    element: <WrappedComponent element={<ProfilePage />} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+
+  {
     path: "editprofile",
-    element: <WrappedComponent element={<EditProfile/>} />,
+    element: <WrappedComponent element={<EditProfile />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
@@ -179,7 +199,7 @@ const router = createBrowserRouter([
   },
   {
     path: "payment",
-    element: <WrappedComponent element={<PaymentReceipt/>}/>,
+    element: <WrappedComponent element={<PaymentReceipt />} />,
     errorElement: <ErrorElement />,
   },
   {
