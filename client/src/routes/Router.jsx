@@ -152,7 +152,6 @@ const router = createBrowserRouter([
   },
   {
     path: 'help',
-
     element: <WrappedComponent element={<HelpCenter />} />,
     errorElement: <ErrorElement />,
   },
@@ -189,7 +188,6 @@ const router = createBrowserRouter([
 
   {
     path: 'editprofile',
-
     element: <WrappedComponent element={<EditProfile />} />,
     ErrorBoundary: <ErrorElement />,
   },
@@ -218,7 +216,6 @@ const router = createBrowserRouter([
     element: <SecuritySection />,
     errorElement: <ErrorElement />,
   },
-  ,
   {
     path: 'paymentmethods',
     element: <WrappedComponent element={<PaymentMethods />} />,
@@ -236,7 +233,6 @@ const router = createBrowserRouter([
   },
   {
     path: 'servicepage',
-
     element: <WrappedComponent element={<ServicePage />} />,
     errorElement: <ErrorElement />,
   },
@@ -263,20 +259,15 @@ const router = createBrowserRouter([
   },
   {
     path: 'accessdenied',
-
-    element: (
-      <ErrorBoundary>
-        <AccessDenied />
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<AccessDenied />} />,
+    errorElement: <ErrorElement />,
   },
   {
     path: 'jobs',
-    element: (
-      <ErrorBoundary>
-        <Jobs />
-      </ErrorBoundary>
-    ),
+    element: <WrappedComponent element={<Jobs />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
     path: 'complaint',
     element: <WrappedComponent element={<Complaint />} />,
     errorElement: <ErrorElement />,
