@@ -26,28 +26,48 @@ const ProviderProfile = lazy(() => import('../pages/common/ProviderProfile'));
 const PaymentCongratulation = lazy(() =>
   import('../pages/common/PaymentCongratulation')
 );
-const AddNewCard = lazy(() => import('../pages/common/AddNewCard'));
-const PaymentMethods = lazy(() => import('../pages/common/PaymentMethods'));
-const ForgotPage = lazy(() => import('../pages/auth/ForgotPassword'));
-const CreateNewPassword = lazy(() => import('../pages/auth/CreateNewPassword'));
-const Notification = lazy(() => import('./../pages/notification/Notification'));
-const SearchBarPage = lazy(() => import('../pages/common/SearchBarPage'));
-const Category = lazy(() => import('../pages/root/Category'));
+
+const AddNewCard = lazy(() => import("../pages/common/AddNewCard"));
+const PaymentMethods = lazy(() => import("../pages/common/PaymentMethods"));
+const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
+const CreateNewPassword = lazy(() => import("../pages/auth/CreateNewPassword"));
+const Notification = lazy(() => import("./../pages/notification/Notification"));
+const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
+const Category = lazy(() => import("../pages/root/Category"));
+const InviteFriend = lazy(() => import("../pages/InviteFriend/InviteFriend"));
+
+
 
 import SecuritySection from '../pages/helpcenter/SecuritySection';
 import ErrorElement from '../pages/common/ErrorElement';
 import ErrorBoundary from '../pages/common/ErrorBoundary';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 
-const HeaderChat = lazy(() => import('../pages/Chatindox/HeaderChat'));
-const Transactions = lazy(() => import('../pages/transactions/Transactions'));
-const CakeDelivery = lazy(() => import('../pages/cakeDelivery/CakeDelivery'));
-const Home = lazy(() => import('../pages/dashboard/Home'));
-const EditProfile = lazy(() => import('../pages/auth/EditProfile'));
-const Booking = lazy(() => import('../pages/root/Booking'));
-const PaymentReceipt = lazy(() => import('../pages/payment/PaymentReceipt'));
-const ServicePage = lazy(() => import('../pages/dashboard/servicepage'));
 
+import Transactions from "../pages/transactions/Transactions";
+import Jobs from "../pages/common/Jobs";
+import Complaint from "../pages/complaint/complaint";
+
+const HeaderChat = lazy(() => import("../pages/Chatindox/HeaderChat"));
+const Transactions = lazy(() => import("../pages/transactions/Transactions"));
+const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
+const Home = lazy(() => import("../pages/dashboard/Home"));
+const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
+const Booking = lazy(() => import("../pages/root/Booking"));
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
+const FilterPage = lazy(() => import("../pages/auth/FilterPage"))
+const ServicePage = lazy(() => import("../pages/dashboard/servicepage"));
+
+
+
+const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
+const Home = lazy(() => import("../pages/dashboard/Home"));
+const EditProfile = lazy(() => import("../pages/auth/EditProfile"));
+const ProfilePage = lazy(() => import("../pages/auth/ProfilePage"));
+const Review = lazy(() => import("../pages/auth/Review"));
+const Reviews = lazy(() => import("../pages/auth/Reviews"));
+
+const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"))
 const WrappedComponent = ({ element }) => (
   <ErrorBoundary>
     <Suspense fallback={<LoadingSpinner />}>{element}</Suspense>
@@ -127,7 +147,24 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: 'help',
+
+    path: "inviteFriend",
+    element: <WrappedComponent element={<InviteFriend />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path:"review",
+    element: <WrappedComponent element={<Review />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path:"reviews",
+    element: <WrappedComponent element={<Reviews />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "help",
+
     element: <WrappedComponent element={<HelpCenter />} />,
     errorElement: <ErrorElement />,
   },
@@ -157,7 +194,15 @@ const router = createBrowserRouter([
     ErrorBoundary: <ErrorElement />,
   },
   {
-    path: 'editprofile',
+
+    path: "profilepage",
+    element: <WrappedComponent element={<ProfilePage />} />,
+    ErrorBoundary: <ErrorElement />,
+  },
+
+  {
+    path: "editprofile",
+
     element: <WrappedComponent element={<EditProfile />} />,
     ErrorBoundary: <ErrorElement />,
   },
@@ -198,7 +243,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: 'servicepage',
+
+    path: "filterpage",
+    element: <WrappedComponent element={<FilterPage />} />,
+    errorElement: <ErrorElement />,
+  },
+    path: "servicepage",
+
     element: <WrappedComponent element={<ServicePage />} />,
     errorElement: <ErrorElement />,
   },
@@ -219,7 +270,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: 'accessdenied',
+
+    path: "payment",
+    element: <WrappedComponent element={<PaymentReceipt />} />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "accessdenied",
+
     element: (
       <ErrorBoundary>
         <AccessDenied />
@@ -233,6 +291,23 @@ const router = createBrowserRouter([
         <NotFound />
       </ErrorBoundary>
     ),
+  },
+  {
+    path: "jobs",
+    element: (
+      <ErrorBoundary>
+        <Jobs/>
+      </ErrorBoundary>
+    ),
+    path: "complaint",
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Complaint />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+    errorElement: <ErrorElement />,
   },
 ]);
 
