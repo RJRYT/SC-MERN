@@ -36,8 +36,6 @@ const SearchBarPage = lazy(() => import("../pages/common/SearchBarPage"));
 const Category = lazy(() => import("../pages/root/Category"));
 const InviteFriend = lazy(() => import("../pages/InviteFriend/InviteFriend"));
 
-
-
 import SecuritySection from '../pages/helpcenter/SecuritySection';
 import ErrorElement from '../pages/common/ErrorElement';
 import ErrorBoundary from '../pages/common/ErrorBoundary';
