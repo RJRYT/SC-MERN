@@ -1,31 +1,32 @@
-import React, { lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { lazy, Suspense } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const SignUp = lazy(() => import("../pages/auth/Signup"));
-const Login = lazy(() => import("../pages/auth/Login"));
-const OtpVerification = lazy(() => import("../pages/auth/OtpVerification"));
-const SplashScreen = lazy(() => import("../pages/common/SplashScreen"));
-const AllowLocation = lazy(() => import("../pages/auth/AllowLocation"));
-const AccessDenied = lazy(() => import("../pages/common/AccessDenied"));
-const NotFound = lazy(() => import("../pages/common/notFound"));
-const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
-const Profile = lazy(() => import("../pages/dashboard/Profile"));
-const Settings = lazy(() => import("../pages/dashboard/Settings"));
-const Terms = lazy(() => import("../pages/common/Terms"));
-const About = lazy(() => import("../pages/common/About"));
-const NotificationSett = lazy(() => import("../pages/common/Notification"));
-const FillProfile = lazy(() => import("../pages/auth/FillProfile"));
-const HelpCenter = lazy(() => import("../pages/helpcenter/HelpCenter"));
+const SignUp = lazy(() => import('../pages/auth/Signup'));
+const Login = lazy(() => import('../pages/auth/Login'));
+const OtpVerification = lazy(() => import('../pages/auth/OtpVerification'));
+const SplashScreen = lazy(() => import('../pages/common/SplashScreen'));
+const AllowLocation = lazy(() => import('../pages/auth/AllowLocation'));
+const AccessDenied = lazy(() => import('../pages/common/AccessDenied'));
+const NotFound = lazy(() => import('../pages/common/notFound'));
+const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
+const Profile = lazy(() => import('../pages/dashboard/Profile'));
+const Settings = lazy(() => import('../pages/dashboard/Settings'));
+const Terms = lazy(() => import('../pages/common/Terms'));
+const About = lazy(() => import('../pages/common/About'));
+const NotificationSett = lazy(() => import('../pages/common/Notification'));
+const FillProfile = lazy(() => import('../pages/auth/FillProfile'));
+const HelpCenter = lazy(() => import('../pages/helpcenter/HelpCenter'));
 const CongratulationsPage = lazy(() =>
-  import("../pages/auth/CongratulationPage")
+  import('../pages/auth/CongratulationPage')
 );
 
-const RequestService = lazy(() => import("../pages/dashboard/RequestService"));
-const Inbox = lazy(() => import("../pages/root/Inbox"));
-const ProviderProfile = lazy(() => import("../pages/common/ProviderProfile"));
+const RequestService = lazy(() => import('../pages/dashboard/RequestService'));
+const Inbox = lazy(() => import('../pages/root/Inbox'));
+const ProviderProfile = lazy(() => import('../pages/common/ProviderProfile'));
 const PaymentCongratulation = lazy(() =>
-  import("../pages/common/PaymentCongratulation")
+  import('../pages/common/PaymentCongratulation')
 );
+
 const AddNewCard = lazy(() => import("../pages/common/AddNewCard"));
 const PaymentMethods = lazy(() => import("../pages/common/PaymentMethods"));
 const ForgotPage = lazy(() => import("../pages/auth/ForgotPassword"));
@@ -36,9 +37,12 @@ const Category = lazy(() => import("../pages/root/Category"));
 const InviteFriend = lazy(() => import("../pages/InviteFriend/InviteFriend"));
 
 
-import ErrorElement from "../pages/common/ErrorElement";
-import ErrorBoundary from "../pages/common/ErrorBoundary";
-import LoadingSpinner from "../components/common/LoadingSpinner";
+
+import SecuritySection from '../pages/helpcenter/SecuritySection';
+import ErrorElement from '../pages/common/ErrorElement';
+import ErrorBoundary from '../pages/common/ErrorBoundary';
+import LoadingSpinner from '../components/common/LoadingSpinner';
+
 
 import Transactions from "../pages/transactions/Transactions";
 import Jobs from "../pages/common/Jobs";
@@ -53,6 +57,7 @@ const Booking = lazy(() => import("../pages/root/Booking"));
 const PaymentReceipt = lazy(() => import("../pages/payment/PaymentReceipt"));
 const FilterPage = lazy(() => import("../pages/auth/FilterPage"))
 const ServicePage = lazy(() => import("../pages/dashboard/servicepage"));
+
 
 
 const CakeDelivery = lazy(() => import("../pages/cakeDelivery/CakeDelivery"));
@@ -72,76 +77,77 @@ const WrappedComponent = ({ element }) => (
 const router = createBrowserRouter([
   {
     index: true,
-    path: "",
+    path: '',
     element: <WrappedComponent element={<SplashScreen />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "signup",
+    path: 'signup',
     element: <WrappedComponent element={<SignUp />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "login",
+    path: 'login',
     element: <WrappedComponent element={<Login />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "allowlocation",
+    path: 'allowlocation',
     element: <WrappedComponent element={<AllowLocation />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "about",
+    path: 'about',
     element: <WrappedComponent element={<About />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "terms",
+    path: 'terms',
     element: <WrappedComponent element={<Terms />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "notification",
+    path: 'notification',
     element: <WrappedComponent element={<NotificationSett />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "notification2",
+    path: 'notification2',
     element: <WrappedComponent element={<Notification />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "fillprofile",
+    path: 'fillprofile',
     element: <WrappedComponent element={<FillProfile />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "congratulationpage",
+    path: 'congratulationpage',
     element: <WrappedComponent element={<CongratulationsPage />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "otpverification",
+    path: 'otpverification',
     element: <WrappedComponent element={<OtpVerification />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "newpassword",
+    path: 'newpassword',
     element: <WrappedComponent element={<CreateNewPassword />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "searchbarpage",
+    path: 'searchbarpage',
     element: <WrappedComponent element={<SearchBarPage />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "inbox",
+    path: 'inbox',
     element: <WrappedComponent element={<Inbox />} />,
     errorElement: <ErrorElement />,
   },
   {
+
     path: "inviteFriend",
     element: <WrappedComponent element={<InviteFriend />} />,
     errorElement: <ErrorElement />,
@@ -158,35 +164,37 @@ const router = createBrowserRouter([
   },
   {
     path: "help",
+
     element: <WrappedComponent element={<HelpCenter />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "providerprofile",
+    path: 'providerprofile',
     element: <WrappedComponent element={<ProviderProfile />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "Category",
+    path: 'Category',
     element: <WrappedComponent element={<Category />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "forgotpassword",
+    path: 'forgotpassword',
     element: <WrappedComponent element={<ForgotPage />} />,
     errorElement: <ErrorElement></ErrorElement>,
   },
   {
-    path: "cakeDelivery",
+    path: 'cakeDelivery',
     element: <WrappedComponent element={<CakeDelivery />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
-    path: "transactions",
+    path: 'transactions',
     element: <WrappedComponent element={<Transactions />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
+
     path: "profilepage",
     element: <WrappedComponent element={<ProfilePage />} />,
     ErrorBoundary: <ErrorElement />,
@@ -194,70 +202,82 @@ const router = createBrowserRouter([
 
   {
     path: "editprofile",
+
     element: <WrappedComponent element={<EditProfile />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
-    path: "requestservice",
+    path: 'requestservice',
     element: <WrappedComponent element={<RequestService />} />,
     ErrorBoundary: <ErrorElement />,
   },
   {
-    path: "paymentcongratulation",
+    path: 'paymentcongratulation',
     element: <WrappedComponent element={<PaymentCongratulation />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "payment",
+    path: 'payment',
     element: <WrappedComponent element={<PaymentReceipt />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "booking",
+    path: 'booking',
     element: <WrappedComponent element={<Booking />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "paymentmethods",
+    path: 'securitysection',
+    element: <SecuritySection />,
+    errorElement: <ErrorElement />,
+  },
+  ,
+  {
+    path: 'paymentmethods',
     element: <WrappedComponent element={<PaymentMethods />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "addnewcards",
+    path: 'addnewcards',
     element: <WrappedComponent element={<AddNewCard />} />,
     errorElement: <ErrorElement />,
   },
   {
+
     path: "filterpage",
     element: <WrappedComponent element={<FilterPage />} />,
     errorElement: <ErrorElement />,
   },
     path: "servicepage",
+
     element: <WrappedComponent element={<ServicePage />} />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "chat",
+    path: 'chat',
     element: <WrappedComponent element={<HeaderChat />} />,
     errorElement: <ErrorElement />,
   },
+
   {
-    path: "dashboard",
+    path: 'dashboard',
     element: <WrappedComponent element={<Dashboard />} />,
     ErrorBoundary: <ErrorElement />,
     children: [
-      { path: "profile", element: <Profile /> },
-      { path: "home", element: <Home /> },
-      { path: "settings", element: <Settings /> },
+      { path: 'profile', element: <Profile /> },
+      { path: 'home', element: <Home /> },
+      { path: 'settings', element: <Settings /> },
     ],
   },
   {
+
     path: "payment",
     element: <WrappedComponent element={<PaymentReceipt />} />,
     errorElement: <ErrorElement />,
   },
   {
     path: "accessdenied",
+
     element: (
       <ErrorBoundary>
         <AccessDenied />
@@ -265,7 +285,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "*",
+    path: '*',
     element: (
       <ErrorBoundary>
         <NotFound />
