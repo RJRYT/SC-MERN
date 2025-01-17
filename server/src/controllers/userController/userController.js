@@ -201,10 +201,68 @@ export const createAccessToken = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Access token created successfully.",
-      // accessToken: newAccessToken, 
+      // accessToken: newAccessToken,
     });
   } catch (error) {
     console.error("Error in createAccessToken:", error);
+    res.status(500).json({ success: false, message: "Internal server error." });
+  }
+};
+
+export const fillUserProfile = async (req, res) => {
+  try {
+    const requiredFields = [
+      "fullName",
+      "address",
+      "dateofBirth",
+      "email",
+      "mobile",
+      "genter",
+      "houseName",
+      "LandMark",
+      "pincode",
+      "distict",
+      "state",
+    ];
+    //for missing fields
+    const missingFields = requiredFields.filter((field) => !req.body[field]);
+    if (missingFields.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: `Missing fields: ${missingFields.join(", ")}`,
+      });
+    }
+
+    const user = req.user;
+
+    const userData = await User.findById(user.user_id);
+    if (!userData) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    userData.fullName = req.body.fullName;
+    userData.address = req.body.address;
+    userData.dateofBirth = req.body.dateofBirth;
+    userData.email = req.body.email;
+    userData.mobile = req.body.mobile;
+    userData.gender = req.body.genter;
+    userData.houseName = req.body.houseName;
+    userData.landMark = req.body.LandMark;
+    userData.pincode = req.body.pincode;
+    userData.district = req.body.distict;
+    userData.state = req.body.state;
+
+    await userData.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "User profile updated successfully.",
+      userData,
+    });
+  } catch (error) {
+    console.error("Error in fillUserProfile:", error);
     res.status(500).json({ success: false, message: "Internal server error." });
   }
 };
