@@ -33,7 +33,7 @@ const ForgotPage = lazy(() => import('../pages/auth/ForgotPassword'));
 const CreateNewPassword = lazy(() => import('../pages/auth/CreateNewPassword'));
 const Notification = lazy(() => import('./../pages/notification/Notification'));
 const SearchBarPage = lazy(() => import('../pages/common/SearchBarPage'));
-const Category = lazy(() => import('../pages/root/Category'));
+const Category = lazy(() => import('../pages/common/Category'));
 const InviteFriend = lazy(() => import('../pages/InviteFriend/InviteFriend'));
 
 import SecuritySection from '../pages/helpcenter/SecuritySection';
