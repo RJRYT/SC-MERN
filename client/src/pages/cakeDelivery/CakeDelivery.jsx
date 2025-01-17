@@ -4,6 +4,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { CiBookmarkMinus } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
 import Header from "../../components/header/Header";
+import Widget from "../../components/widget/Widget";
 
 function CakeDelivery() {
   // State for bookmark icon
@@ -142,6 +143,7 @@ function CakeDelivery() {
               </div>
               </div>
             </div>
+            <Widget/>
              </div>
     </>
   );

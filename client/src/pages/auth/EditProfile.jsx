@@ -7,7 +7,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { MdOutlineDateRange } from "react-icons/md";
 import Header from "../../components/header/Header";
-
+import Blackbutton from "../../components/blackbutton/Blackbutton";
 const EditProfile = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
@@ -24,7 +24,7 @@ const EditProfile = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[#F5F9FF]">
       {/* Header Section */}
-      <Header title={"Edit Profile"} />
+      <Header title={"EDIT PROFILE"} />
 
       {/* Main Container */}
       <div className="flex flex-col items-center py-8 px-4 md:px-8">
@@ -147,22 +147,11 @@ const EditProfile = () => {
               className="w-full bg-white text-gray-800 p-4 rounded-lg shadow-md placeholder-black focus:outline-none focus:ring-2 focus:ring-[#35384a]"
             />
           </div>
+          <Blackbutton label="Update"/>
         </div>
 
         {/* Update Button */}
-        <div className="flex justify-center mt-8 w-full">
-          <button
-            className="flex items-center justify-between w-full max-w-md text-white bg-[#1D1F2A] hover:bg-[#35384a] focus:outline-none focus:ring-4 
-               focus:ring-blue-400 font-medium rounded-full text-lg px-5 py-4 transition duration-300"
-          >
-            <span className="flex-grow text-center">Update</span>
-            <IoIosArrowRoundForward
-              className="bg-white rounded-full p-1"
-              color="black"
-              size={30}
-            />
-          </button>
-        </div>
+        
       </div>
     </div>
   );

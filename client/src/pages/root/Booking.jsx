@@ -5,6 +5,8 @@ import { ScheduledCard } from "../../components/cards/ScheduledCard";
 import { CiCircleChevLeft } from "react-icons/ci";
 import { BiSearch } from "react-icons/bi";
 import { LuSettings2 } from "react-icons/lu";
+import Header from "../../components/header/Header";
+import Widget from "../../components/widget/Widget";
 
 const bookings = [
   {
@@ -33,26 +35,15 @@ const bookings = [
 
 const Booking = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-white items-center">
+    <div className="min-h-screen w-screen flex flex-col bg-white items-center">
       {/* Navbar */}
-      <div className="w-full max-w-[600px] bg-[#1D1F2A] h-[60px] px-4 flex items-center rounded-t-lg justify-between">
-        <IconButton variant="text">
-          <CiCircleChevLeft size={24} color="white" />
-        </IconButton>
-        <Typography variant="h6" className="text-white font-semibold">
-          BOOKINGS
-        </Typography>
-        <div className="flex items-center space-x-2">
-          <IconButton variant="text">
-            <LuSettings2 size={24} color="white" />
-          </IconButton>
-          <IconButton variant="text">
-            <BiSearch size={24} color="white" />
-          </IconButton>
-        </div>
+      <div className="w-full">
+      <Header title="BOOKINGS" showSearch showSettings/>
       </div>
+     
 
-      <Card className="w-full shadow-none bg-[#D9D9DB] h-[650px] rounded-t-none max-w-[600px] p-0 mt-0">
+      <div className="w-full shadow-none bg-[#D9D9DB] flex justify-center  rounded-t-none h-screen p-0 mt-0">
+        <div className="w-[350px] md:w-[700px]">
         {" "}
         <div className="p-6 space-y-4">
           {bookings.map((booking) =>
@@ -63,7 +54,11 @@ const Booking = () => {
             )
           )}
         </div>
-      </Card>
+        </div>
+       
+      
+      </div>
+      <Widget/>
     </div>
   );
 };

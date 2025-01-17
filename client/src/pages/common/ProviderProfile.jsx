@@ -13,6 +13,8 @@ import pumbClean from "../../assets/images/pumbCleanLogo.png";
 import locksetChanher from "../../assets/images/locksetChanger.png";
 import audioInstall from "../../assets/images/audioInstallicone.png";
 import waterTankIcone from "../../assets/images/watertangicone.png";
+import Blackbutton from "../../components/blackbutton/Blackbutton";
+import Header from "../../components/header/Header";
 
 const ProviderProfile = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -22,17 +24,12 @@ const ProviderProfile = () => {
   };
 
   return (
-    <div className=" flex flex-col bg-gray-50">
+    <div className=" flex flex-col bg-[#D9D9DB]">
       {/* Header Section */}
-      <div className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4">
-        <CiCircleChevLeft size={30} color="white" className="mr-4" />
-        <h3 className="text-white text-lg md:text-2xl font-semibold">
-          PROFILE
-        </h3>
-      </div>
+      <Header title="PROFILE"/>
 
       {/* Image Section */}
-      <div className="relative flex items-center justify-center w-full max-w-[1000px] h-[200px] md:h-[300px] bg-[#736A68] mx-auto ">
+      <div className="relative flex items-center justify-center w-full max-w-[700px] h-[200px] md:h-[300px] bg-[#736A68] mx-auto ">
         {/* Image Element */}
 
         {/* Message Icon */}
@@ -42,10 +39,10 @@ const ProviderProfile = () => {
       </div>
 
       {/* Spacer */}
-      <div className="w-full max-w-[1000px] h-7 bg-[#D9D9DB] mx-auto"></div>
+      <div className="w-full max-w-[700px] h-7 bg-[#D9D9DB] mx-auto"></div>
 
       {/*all Content Section div  */}
-      <div className="w-full max-w-[1000px] bg-[#D9D9DB] px-4 md:px-6 mx-auto ">
+      <div className="w-full max-w-[700px] bg-[#D9D9DB] px-4 md:px-6 mx-auto ">
         {/* Provider Details */}
         <div className="bg-white rounded-lg shadow-md p-4 mt-4">
           <p className="flex justify-between  font-bold">
@@ -288,10 +285,17 @@ const ProviderProfile = () => {
             ))}
           </div>
         </div>
+        <div className="w-full flex justify-center items-center mt-3 mb-3">
+        <div className="w-[350px] md:w-[400px] ">
+        <Blackbutton label="Book Service"/>
+        </div>
+        </div>
+     
+       
       </div>
 
       {/* Sticky Footer Button */}
-      <div className="fixed bottom-0 left-0 w-full bg-transparent p-4">
+      {/* <div className="fixed bottom-0 left-0 w-full bg-transparent p-4">
         <button
           className="flex items-center justify-between w-full max-w-md mx-auto text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
                      focus:ring-gray-400 font-medium rounded-full text-base px-5 py-3 transition duration-300"
@@ -303,10 +307,10 @@ const ProviderProfile = () => {
             size={34}
           />
         </button>
-      </div>
+      </div> */}
 
       {/* Spacer */}
-      <div className="w-full max-w-[1000px] h-[50px] bg-[#D9D9DB] mx-auto"></div>
+      
     </div>
   );
 };

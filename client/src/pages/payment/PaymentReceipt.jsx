@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { FiSend } from "react-icons/fi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { BsPrinter } from "react-icons/bs";
+import Header from '../../components/header/Header';
 const PaymentReceipt = () => {
   const [copySuccess, setCopySuccess] = useState(false);
 const [dropDown, setDropDown] = useState(false);
@@ -24,7 +25,7 @@ setDropDown(!dropDown)
   return (
     <div className='w-screen  flex-col h-screen flex'>
       {/* header */}
-      <div className='w-full flex justify-between items-center h-[100px] bg-black text-2xl px-5 md:p-10 lg:p-10'>
+      {/* <div className='w-full flex justify-between items-center h-[100px] bg-black text-2xl px-5 md:p-10 lg:p-10'>
       <div className='justify-center flex items-center gap-3'>
       <TfiArrowCircleLeft  className='text-white text-4xl'/>
       <span className='text-white text-2xl'>E-RECEIPT</span>
@@ -48,8 +49,8 @@ setDropDown(!dropDown)
           </div>
         )}
       </div>
-      </div>
-
+      </div> */}
+<Header title="E-RECEIPT" options/>
       {/* receipt */}
 <div className='w-full justify-center flex items-center  h-screen'>
 <div className=' w-[350px] md:w-[440px] p-10 space-y-4 shadow-xl rounded-lg'>

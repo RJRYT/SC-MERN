@@ -3,16 +3,18 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 
 import chipicone from "../../assets/images/chipIcone.png";
 import validthruIcone from "../../assets/images/Valid Thru.png";
+import Header from "../../components/header/Header";
+import Blackbutton from "../../components/blackbutton/Blackbutton";
+import Widget from "../../components/widget/Widget";
 
 const AddNewCard = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#D9D9DB] items-center">
+    <div className="min-h-screen w-screen flex flex-col bg-[#D9D9DB] items-center">
       {/* Header Section */}
-      <div className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4 shadow-md">
-        <CiCircleChevLeft size={30} color="white" className="mr-4" />
-        <h3 className="text-white text-[24px] font-semibold">ADD CARD</h3>
+      <div className="w-full">
+      <Header title="ADD NEW CARD"/>
       </div>
-
+    
       {/* Main Container */}
       <div className="w-full max-w-[1000px] px-6 py-8 flex-grow flex flex-col items-center">
         {/* Card Component */}
@@ -96,25 +98,14 @@ const AddNewCard = () => {
       />
     </div>
   </div>
+  <Blackbutton label="Add New Card"/>
 </div>
 
 
       </div>
 
       {/* Add New Card Button */}
-      <div className="w-full flex justify-center px-6 fixed bottom-8">
-        <button
-          className="flex items-center justify-between w-full max-w-md text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
-                     focus:ring-gray-400 font-medium rounded-full text-base sm:text-lg px-6 py-3 transition duration-300"
-        >
-          <span className="flex-grow text-center">Add New Card</span>
-          <IoIosArrowRoundForward
-            className="bg-white rounded-full p-2"
-            color="black"
-            size={34}
-          />
-        </button>
-      </div>
+  
     </div>
   );
 };

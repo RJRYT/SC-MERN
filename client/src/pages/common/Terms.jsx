@@ -1,17 +1,11 @@
 import React from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
+import Header from '../../components/header/Header';
 
 const Terms = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col p-0 m-0">
-      <div className="bg-custom-dark-purple text-white p-6 pt-12 h-28 flex items-center justify-between"> 
-        <button className="rounded-full border-2 border-white flex justify-center items-center p-1">
-          <IoIosArrowBack className="text-white text-3xl" />
-        </button>
-        <h6 className="text-center font-semibold w-full md:w-auto md:flex-grow-0 text-lg md:text-xl md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-          TERMS & CONDITIONS
-        </h6>
-      </div>
+     <Header title="TERMS AND CONDITIONS"/>
       <div className="flex-grow p-6 pt-8 md:px-24"> 
         <div className="space-y-4 md:space-y-0 sm:mt-24 md:mt-0"> 
           <h6 className="mb-4 text-xxs md:text-lg font-semibold text-indigo-900 md:text-left">Condition & Attending</h6>

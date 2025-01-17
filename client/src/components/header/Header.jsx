@@ -2,12 +2,27 @@ import React from 'react'
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { VscSettings } from "react-icons/vsc";
 import { CiSearch } from "react-icons/ci";
+import { useState } from 'react';
+import { FiSend } from "react-icons/fi";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { BsPrinter } from "react-icons/bs";
+import { BsThreeDotsVertical } from "react-icons/bs";
+function Header({title,showSettings,showSearch,options}) {
+  const [dropDown, setDropDown] = useState(false);
 
-function Header({title,showSettings,showSearch}) {
+const handleDrop = () => {
+setDropDown(!dropDown)
+}
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000); // Reset the success state after 2 seconds
+    });
+  };
   return (
     <>
     
-      <div className="flex flex-col h-full bg-white">
+      <div className="flex flex-col  bg-white">
       <div className="bg-[#1d1f2a] text-white py-4 ">
         <div className='flex items-center justify-between px-4'>
             <div className='flex items-center'>
@@ -33,6 +48,27 @@ function Header({title,showSettings,showSearch}) {
                   <CiSearch />
                 </button>
               )}
+            {options && (
+              <div className='relative bg-red'>
+              <BsThreeDotsVertical className='text-white text-2xl' onClick={handleDrop}/>
+              {dropDown && (
+                <div className='bg-gray-500 text-black text-sm w-[120px] absolute top-10 rounded-lg right-0 flex p-4 flex-col'>
+                  <div className='text-md   flex gap-1 items-center justify-end '>
+                    <span>Share</span>
+                    <FiSend/>
+                  </div>
+                  <div className='text-md text-right flex gap-1 items-center justify-end'>
+                    <span>Save</span>
+                    <MdOutlineFileDownload/>
+                  </div>
+                  <div className='text-md  text-right flex gap-1 items-center justify-end'>
+                    <span>Print</span>
+                    <BsPrinter/>
+                  </div>
+                </div>
+              )}
+            </div>
+            )}   
         </div>
         </div>
       </div>

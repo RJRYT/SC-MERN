@@ -24,7 +24,8 @@ import { FaMale, FaFemale } from "react-icons/fa"; // Gender Icons
 import { CiCircleChevLeft } from "react-icons/ci"; // Back Arrow Icon
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { HiOutlinePencilAlt } from "react-icons/hi";
-
+import Blackbutton from "../../components/blackbutton/Blackbutton";
+import Header from "../../components/header/Header";
 const FillProfile = () => {
   const [profileImage, setProfileImage] = React.useState(
     "image/profile_icon_jpg.png"
@@ -45,16 +46,11 @@ const FillProfile = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-[#d9d9db]">
       {/* Header Section */}
-      <div className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4">
-        <CiCircleChevLeft size={30} color="white" className="mr-4" />
-        <h3 className="text-white text-[24px] font-semibold">
-          FILL YOUR PROILE
-        </h3>
-      </div>
-      <div className="flex justify-center items-center min-h-screen bg-white">
-        <Card className="w-full max-w-md p-0 bg-gray-100">
+      <Header title="FILL YOUR PROFILE"/>
+      <div className="flex justify-center w-screen items-center min-h-screen bg-white">
+        <Card className="w-[360px] md:w-[420px]  border-none p-0 ">
           <CardBody className="p-6">
             {/* Form Section */}
             <form className="mt-0">
@@ -87,8 +83,8 @@ const FillProfile = () => {
               </div>
 
               {/* Input Fields */}
-              <div className="space-y-4 ">
-                <div className="bg-[#736A68]">
+              <div className="space-y-4">
+                <div className="bg-[#736A68] rounded-lg">
                   {/* <Input
                     type="Full Name"
                     placeholder="Full Name"
@@ -101,7 +97,7 @@ const FillProfile = () => {
                   <Input
                     type="text"
                     placeholder="Full Name"
-                    className="!border !border-gray-300 bg-gray-700 text-white shadow-md p-3 rounded-lg ring-4 ring-transparent placeholder:text-white placeholder:opacity-100 focus:ring-2 focus:ring-none focus:outline-none focus:border-transparent"
+                    className=" bg-gray-700 text-white shadow-md p-3 rounded-lg ring-4 ring-transparent placeholder:text-white placeholder:opacity-100 focus:ring-2 focus:ring-none focus:outline-none focus:border-transparent"
                     labelProps={{
                       className: "hidden",
                     }}
@@ -109,7 +105,7 @@ const FillProfile = () => {
                   />
                 </div>
 
-                <div className="bg-[#736A68] ">
+                <div className="bg-[#736A68] rounded-lg">
                   {" "}
                   <Input
                     type="Address"
@@ -122,7 +118,7 @@ const FillProfile = () => {
                   />
                 </div>
 
-                <div className="bg-[#736A68] text-white placeholder:text-white  ">
+                <div className="bg-[#736A68] rounded-lg">
                   {" "}
                   <div className="text-white">
                     <Popover placement="bottom">
@@ -189,7 +185,7 @@ const FillProfile = () => {
                     </Popover>
                   </div>
                 </div>
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   {" "}
                   <Input
                     type="Email"
@@ -201,7 +197,7 @@ const FillProfile = () => {
                     containerProps={{ className: "min-w-[100px]" }}
                   />
                 </div>
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   {/* Phone Number with Flag Dropdown */}
                   <div className="flex w-full items-center">
                     <Menu placement="bottom-start">
@@ -258,7 +254,7 @@ const FillProfile = () => {
                     />
                   </div>
                 </div>
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   <Select
                     label="Gender"
                     className="!border !border-gray-300 bg-[#736A68] text-white shadow-g shadow-gray-900/5 ring-4 ring-transparent placeholder:text-white placeholder:opacity-100 focus:!border-gray-900 focus:ring-gray-900/10"
@@ -279,7 +275,7 @@ const FillProfile = () => {
                   </Select>
                 </div>
 
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   <Input
                     type="House"
                     placeholder="House Name"
@@ -291,7 +287,7 @@ const FillProfile = () => {
                   />
                 </div>
 
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   <Input
                     type="Land Mark"
                     placeholder="Land Mark"
@@ -302,7 +298,7 @@ const FillProfile = () => {
                     containerProps={{ className: "min-w-[100px]" }}
                   />
                 </div>
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   <Input
                     type="Pin Code"
                     placeholder="Pin Code"
@@ -313,7 +309,7 @@ const FillProfile = () => {
                     containerProps={{ className: "min-w-[100px]" }}
                   />
                 </div>
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   <Input
                     type="District"
                     placeholder="District"
@@ -324,7 +320,7 @@ const FillProfile = () => {
                     containerProps={{ className: "min-w-[100px]" }}
                   />
                 </div>
-                <div className="bg-[#736A68]">
+                <div className="bg-[#736A68] rounded-lg">
                   <Input
                     type="State"
                     placeholder="State"
@@ -339,18 +335,7 @@ const FillProfile = () => {
 
               {/* Submit Button */}
               <div className="mt-6 flex justify-center">
-                <Button
-                  className="flex items-center justify-between w-full max-w-md text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
-                  focus:ring-gray-400 font-medium rounded-full text-base px-5 py-3 transition duration-300"
-                >
-                  <p className="flex-grow text-center normal-case"> Continue</p>
-                  {/* <span >Continue</span> */}
-                  <IoIosArrowRoundForward
-                    className="bg-white rounded-full"
-                    color="black"
-                    size={34}
-                  />
-                </Button>
+                  <Blackbutton label="Continue"/>
               </div>
             </form>
             <div className="flex items-center gap-4"></div>

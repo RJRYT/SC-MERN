@@ -85,7 +85,7 @@ const ComplaintForm = () => {
         <input type="file" accept="image/*,video/*" placeholder='Images and Videos' hidden id='imgselector'/>
 
       </div>
-      <button className="w-full sm:w-1/2 mt-3 rounded-full shadow-lg flex items-center justify-center h-[60px] bg-conform text-white text-xl font-bold shadow-gray-800/50">
+      <button className="w-full sm:w-1/2 mt-3 rounded-full shadow-lg mb-20 flex items-center justify-center h-[60px] bg-conform text-white text-xl font-bold shadow-gray-800/50">
         Confirm Complaint
       </button>
     </div>

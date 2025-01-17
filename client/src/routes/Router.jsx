@@ -26,6 +26,7 @@ const PaymentCongratulation = lazy(() =>
   import('../pages/common/PaymentCongratulation')
 );
 
+
 const AddNewCard = lazy(() => import('../pages/common/AddNewCard'));
 const PaymentMethods = lazy(() => import('../pages/common/PaymentMethods'));
 const ForgotPage = lazy(() => import('../pages/auth/ForgotPassword'));
