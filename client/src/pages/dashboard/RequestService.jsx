@@ -14,13 +14,16 @@ import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
+import Header from '../../components/header/Header';
+import Blackbutton from '../../components/blackbutton/Blackbutton';
 
 const RequestService = () => {
   const [date, setDate] = useState(new Date());
   const [value, onChange] = useState('10:00');
   return (
     <>
-      <div className="bg-black text-white h-20 flex items-center"></div>
+      <div className='w-full flex flex-col'>
+        <Header title="REQUEST SERVICE"/>
       <div className="bg-[#d9d9db] flex 2xl:h-[130vh] h-[175vh]">
         <div className=" w-11/12 max-w-md  mx-auto flex flex-col gap-5 mt-10">
           <div className="flex gap-10 items-center">
@@ -203,13 +206,12 @@ const RequestService = () => {
             </div>
           </div>
           <div>
-            <button className="w-full rounded-full shadow-lg flex items-center justify-center h-[60px] bg-primary text-white text-xl font-bold relative">
-              Conform
-              <FaCircleArrowRight className="absolute right-2 text-5xl p-1" />
-            </button>
+           <Blackbutton label="Confirm"/>
           </div>
         </div>
       </div>
+      </div>
+     
     </>
   );
 };

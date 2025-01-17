@@ -3,6 +3,7 @@ import { CiSearch } from "react-icons/ci";
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 import { IoMdArrowBack } from "react-icons/io";
 import { MdNavigateNext } from "react-icons/md";
+import Header from "../../components/header/Header";
 
 const SearchBarPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,18 +25,10 @@ const SearchBarPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-6">
-      <form onSubmit={handleSearch} className="w-full max-w-lg mx-auto">
-        <div className="flex items-center space-x-2 mb-2">
-          <button
-            type="button"
-            onClick={handleBack}
-            className="flex items-center text-black"
-          >
-            <IoMdArrowBack size={24} className="mr-2" />
-          </button>
-          <h2 className="text-lg font-semibold text-gray-800">SEARCH</h2>
-        </div>
+    <div className="min-h-screen flex flex-col bg-gray-50 ">
+      <Header title="SEARCH"/>
+      <form onSubmit={handleSearch} className="w-full max-w-lg mx-auto p-3">
+      
 
         <div className="relative">
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white">

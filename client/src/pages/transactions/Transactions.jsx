@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../components/header/Header'
 import Widget from '../../components/widget/Widget'
-
+import Image from "../../assets/images/men_icon_jpg.png"
 const Transactions = () => {
   return (
     <div className='w-full h-screen flex flex-col bg-[#d9d9db]'>
@@ -14,10 +14,12 @@ const Transactions = () => {
       {/* Content */}
       <div className='w-full h-screen items-center justify-center flex p-2 overflow-y-auto scrollbar-hidden bg-[#d9d9db]  mt-[100px]'>
       <div className='flex flex-col items-center shadow-xl rounded-lg w-[360px] md:w-[700px] justify-start  overflow-y-auto space-y-4 h-full'>
-        {[...Array(8)].slice(0, window.innerWidth < 768 ? 7 : 4).map((_, index) => ( // Fixed map method
+        {[...Array(8)].slice(0, window.innerWidth < 768 ? 7 : 5).map((_, index) => ( // Fixed map method
           <div key={index} className='flex justify-between items-center gap-3 md:gap-6 p-2 w-[90%] bg-gray-100 rounded-md shadow-xl mb-2'>
             {/* Avatar */}
-            <div className=' w-[80px] flex  h-[80px] bg-black rounded-lg'></div>
+            <div className=' w-[80px] flex  h-[80px] bg-black rounded-lg'>
+              <img src={Image} alt="Image"/>
+            </div>
             
             {/* Transaction Details */}
             <div className='flex flex-col flex-1 space-y-1 p-1 w-full'>

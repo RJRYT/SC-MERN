@@ -1,6 +1,7 @@
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Card, Typography } from "@material-tailwind/react";
 import congPageIcon from "../../assets/images/congPageIcon.png";
+import Blackbutton from "../../components/blackbutton/Blackbutton";
 
 const PaymentCongratulation = () => {
   return (
@@ -60,17 +61,7 @@ const PaymentCongratulation = () => {
 
           {/* E-Receipt Button */}
           <div className="flex justify-center w-full max-w-[300px]">
-            <button
-              className="flex items-center justify-between w-full max-w-[1000px] text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
-               focus:ring-gray-400 font-medium rounded-full text-base sm:text-lg px-5 py-3 transition duration-300"
-            >
-              <span className="flex-grow text-center">E - Receipt</span>
-              <IoIosArrowRoundForward
-                className="bg-white rounded-full p-1"
-                color="black"
-                size={30}
-              />
-            </button>
+          <Blackbutton label="E-receipt"/>
           </div>
         </div>
       </Card>

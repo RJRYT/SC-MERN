@@ -3,7 +3,8 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useState } from "react";
 import { CiLock } from "react-icons/ci";
-
+import Header from "../../components/header/Header";
+import Blackbutton from "../../components/blackbutton/Blackbutton";
 const CreateNewPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -15,17 +16,7 @@ const CreateNewPassword = () => {
   return (
     <main className="min-h-screen flex flex-col bg-[#D9D9DB]">
       {/* Header Section */}
-      <header className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4">
-        <CiCircleChevLeft
-          size={30}
-          color="white"
-          className="mr-4 cursor-pointer"
-          aria-label="Go Back"
-        />
-        <h3 className="text-white text-[20px] sm:text-[24px] font-semibold">
-          Forgot Password
-        </h3>
-      </header>
+ <Header title="FORGOT PASSWORD"/>
 
       {/* Main Content */}
       <section className="flex-grow flex flex-col justify-center items-center px-4 py-8 mt-10 sm:mt-20">
@@ -89,23 +80,11 @@ const CreateNewPassword = () => {
               )}
             </div>
           </div>
+          <Blackbutton label="Continue"/>
         </form>
 
         {/* Verify Button */}
-        <div className="flex justify-center w-full mt-8">
-          <button
-            className="flex items-center justify-between w-full max-w-md text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
-            focus:ring-gray-400 font-medium rounded-full text-base px-5 py-3 transition duration-300"
-          >
-            <span className="flex-grow text-center">Verify</span>
-            <IoIosArrowRoundForward
-              className="bg-white rounded-full"
-              color="black"
-              size={34}
-              aria-hidden="true"
-            />
-          </button>
-        </div>
+       
       </section>
     </main>
   );

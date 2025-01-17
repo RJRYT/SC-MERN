@@ -3,8 +3,8 @@ import { FaCircleCheck } from 'react-icons/fa6';
 const ServicePageComp = ({ first, second, rating }) => {
   return (
     <>
-      <div className="w-96 h-44 rounded-2xl flex border-none">
-        <div className="bg-black w-56 rounded-l-2xl border-none"></div>
+      <div className="w-[350px] md:w-[700px] h-[150px] rounded-2xl flex border-none">
+        <div className="bg-black w-40 rounded-l-2xl border-none"></div>
         <div className="bg-white w-full rounded-r-2xl flex flex-col p-4 gap-2 relative">
           <h2 className="text-orange-600 font-bold mt-2 font-jost">{first}</h2>
           <h1 className="font-bold font-jost">{second}</h1>

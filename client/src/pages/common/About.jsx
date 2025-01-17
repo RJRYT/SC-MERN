@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "../../components/root/Navbar";
 import { IoIosArrowBack } from "react-icons/io";
+import Header from "../../components/header/Header";
 
 function About() {
   return (
     <div>
-      <Navbar />
+      <Header title="ABOUT"/>
       <div className="py-3 px-3 m-3">
         <h5 className="ms-3 font-bold text-lg md:text-xl lg:text-2xl">About</h5>
         <p className="m-3 text-sm md:text-base lg:text-lg">

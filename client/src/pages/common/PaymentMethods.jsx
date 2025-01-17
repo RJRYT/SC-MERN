@@ -1,20 +1,19 @@
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { CiCircleChevLeft } from "react-icons/ci";
 import { FiPlus } from "react-icons/fi";
+import Header from "../../components/header/Header";
+import Blackbutton from "../../components/blackbutton/Blackbutton";
 
 const PaymentMethods = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#D9D9DB] items-center">
+    <div className="h-screen w-screen flex-col bg-[#D9D9DB] items-center">
       {/* Header Section */}
-      <div className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4 shadow-md">
-        <CiCircleChevLeft size={30} color="white" className="mr-4" />
-        <h3 className="text-white text-[24px] font-semibold">
-          PAYMENT METHODS
-        </h3>
-      </div>
+      
+      <Header title="PAYMENT METHODS"/>
 
       {/* Main Content Section */}
-      <div className="w-full max-w-[1000px] px-6 py-8 flex-grow flex flex-col items-center">
+    <div className=" w-screen flex justify-center ">
+    <div className="w-[350px] md:w-[700px] max-w-[1000px]  px-2 py-8 flex-grow flex flex-col items-center">
         {/* Graphic Design Section */}
         <div className="mb-6 h-[200px] rounded-lg flex items-center justify-start w-full bg-white px-4">
           {/* Black Box */}
@@ -52,19 +51,10 @@ const PaymentMethods = () => {
       </div>
 
       {/* Enroll Button */}
-      <div className="w-full flex justify-center px-6 fixed bottom-8">
-        <button
-          className="flex items-center justify-between w-full max-w-md text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
-                     focus:ring-gray-400 font-medium rounded-full text-base sm:text-lg px-6 py-3 transition duration-300"
-        >
-          <span className="flex-grow text-center">Enroll Course - $55</span>
-          <IoIosArrowRoundForward
-            className="bg-white rounded-full p-2"
-            color="black"
-            size={34}
-          />
-        </button>
+      <div className=" flex justify-center bottom-10 px-6 w-[350px] md:w-[380px] fixed ">
+       <Blackbutton label="Enroll Course - $55"/>
       </div>
+    </div>
     </div>
   );
 };

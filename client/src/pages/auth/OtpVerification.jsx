@@ -2,7 +2,8 @@ import { useState } from "react";
 import { CiCircleChevLeft } from "react-icons/ci";
 import { IoBackspaceOutline } from "react-icons/io5";
 import { IoIosArrowRoundForward } from "react-icons/io";
-
+import Blackbutton from "../../components/blackbutton/Blackbutton";
+import Header from "../../components/header/Header";
 const OtpVerification = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
 
@@ -61,12 +62,7 @@ const OtpVerification = () => {
     <div className="min-h-screen flex flex-col bg-gray-50">
       
       {/* Header Section */}
-      <div className="flex items-center w-full bg-[#1D1F2A] h-[60px] px-4">
-        <CiCircleChevLeft size={30} color="white" className="mr-4" />
-        <h3 className="text-white text-[24px] font-semibold">
-          OTP VERIFICATION
-        </h3>
-      </div>
+     <Header title="OTP VERIFICATION"/>
 
       {/* OTP Content Section */}
       <div className="flex justify-center items-center flex-grow px-4 sm:px-0 mx-auto max-w-full md:max-w-md">
@@ -103,18 +99,7 @@ const OtpVerification = () => {
 
           {/* Verify Button */}
           <div className="flex justify-center mb-6">
-            <button
-              onClick={(e) => handleSubmitButton(e)}
-              className="flex items-center justify-between w-full max-w-md text-white bg-[#1D1F2A] hover:bg-gray-900 focus:outline-none focus:ring-4 
-               focus:ring-gray-400 font-medium rounded-full text-base px-5 py-3 transition duration-300"
-            >
-              <span className="flex-grow text-center">Verify</span>
-              <IoIosArrowRoundForward
-                className="bg-white rounded-full"
-                color="black"
-                size={34}
-              />
-            </button>
+          <Blackbutton label="Verify" onClick={(e)=>handleSubmitButton(e)}/>
           </div>
 
           {/* Number Keypad */}

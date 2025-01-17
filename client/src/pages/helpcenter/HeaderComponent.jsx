@@ -4,13 +4,14 @@ import { RiEqualizer2Line } from "react-icons/ri";
 import { FaQ } from "react-icons/fa6";
 import FaqPage from './FaqPage';
 import ContactUs from './ContactUs';
+import Header from '../../components/header/Header';
 
 function HeaderComponent() {
   const [activeTab, setActiveTab] = useState('faq');
 
   return (
-    <div>
-      <div className='bg-dark-purple text-white p-6 pt-12 h-28 flex items-center justify-between  sm-only:flex sm-only:gap-3'>
+    <div className='flex w-full flex-col'>
+      {/* <div className='bg-dark-purple text-white p-6 pt-12 h-28 flex items-center justify-between  sm-only:flex sm-only:gap-3'>
 
         <button className='rounded-full border-2 border-white flex justify-center items-center p-2'>
           <IoIosArrowBack className="text-white text-3xl sm-only:text-2xl" />
@@ -28,8 +29,8 @@ function HeaderComponent() {
             <FaQ className="text-white text-4xl sm-only:text-2xl " />
           </button>
         </div>
-      </div>
-
+      </div> */}
+<Header title="HELP CENTER" showSearch showSettings/>
       <div className='bg-gray-300 w-full h-20 flex'>
         <button
           className={`w-1/2 p-4 ${activeTab === 'faq' ? 'bg-gray-bg text-black border-b-2 border-blue-900' : 'bg-white text-gray-600'}`}
