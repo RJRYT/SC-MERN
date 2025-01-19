@@ -10,15 +10,18 @@ export const resendUserOtp = async (req, res) => {
     const userId = req.user?.user_id;
 
     if (!userId) {
-      return res.status(400).json({ success: false, message: "Invalid user ID." });
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid user ID." });
     }
 
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ success: false, message: "User not found." });
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found." });
     }
 
-    // Check if an OTP was recently sent (e.g., within the last 60 seconds)
     const cooldownPeriod = 60 * 1000; // 1 minute
     if (user.lastOtpSent && Date.now() - user.lastOtpSent < cooldownPeriod) {
       return res.status(429).json({
@@ -27,19 +30,15 @@ export const resendUserOtp = async (req, res) => {
       });
     }
 
-    // Generate OTP and expiry
     const otp = generateOtp();
-    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
-    console.log("Generated OTP:", otp);
+    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
 
-    // Update user with OTP details
     user.otp = otp;
     user.otpExpires = otpExpiry;
     user.lastOtpSent = new Date();
 
     await user.save();
 
-    // Send OTP email
     const emailSubject = "Your OTP Code";
     const emailHtml = generateOtpEmail(otp);
     await sendEmail(user.email, emailSubject, emailHtml);
@@ -53,7 +52,6 @@ export const resendUserOtp = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error." });
   }
 };
-
 
 export const verifyUserOtp = async (req, res) => {
   try {
@@ -73,7 +71,6 @@ export const verifyUserOtp = async (req, res) => {
         .json({ success: false, message: "User not found." });
     }
 
-    // Validate OTP
     if (user.otp !== otp) {
       return res.status(400).json({ success: false, message: "Invalid OTP." });
     }

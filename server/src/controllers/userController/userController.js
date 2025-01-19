@@ -19,7 +19,6 @@ export const userRegister = async (req, res) => {
         .json({ success: false, message: "Please fill all fields." });
     }
 
-    // Validate email
     if (!validator.isEmail(email)) {
       return res.status(400).json({
         success: false,
@@ -27,14 +26,12 @@ export const userRegister = async (req, res) => {
       });
     }
 
-    // Check if passwords match
     if (password !== confirmPassword) {
       return res
         .status(400)
         .json({ success: false, message: "Passwords do not match." });
     }
 
-    // Check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res
@@ -42,22 +39,18 @@ export const userRegister = async (req, res) => {
         .json({ success: false, message: "User already exists." });
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new user
     const newUser = new User({
       email,
       password: hashedPassword,
     });
 
-    // Generate OTP
     const otp = generateOtp();
     const otpExpiry = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
     newUser.otp = otp;
     newUser.otpExpiry = otpExpiry;
 
-    // Save the user to the database
     await newUser.save();
 
     // Generate tokens
