@@ -10,39 +10,38 @@ export const resendUserOtp = async (req, res) => {
     const userId = req.user?.user_id;
 
     if (!userId) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid user ID" });
+      return res.status(400).json({ success: false, message: "Invalid user ID." });
     }
 
     const user = await User.findById(userId);
     if (!user) {
-      return res
-        .status(404)
-        .json({ success: false, message: "User not found" });
+      return res.status(404).json({ success: false, message: "User not found." });
     }
 
-    // Rate limiting for OTP resending
-    const cooldownPeriod = 1 * 60 * 1000; // 1 minute
+    // Check if an OTP was recently sent (e.g., within the last 60 seconds)
+    const cooldownPeriod = 60 * 1000; // 1 minute
     if (user.lastOtpSent && Date.now() - user.lastOtpSent < cooldownPeriod) {
       return res.status(429).json({
         success: false,
-        message: "Please wait before requesting another OTP.",
+        message: "Please wait a while before requesting a new OTP.",
       });
     }
 
-    // Generate OTP
+    // Generate OTP and expiry
     const otp = generateOtp();
-    const otpExpiry = Date.now() + 10 * 60 * 1000;
+    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+    console.log("Generated OTP:", otp);
 
+    // Update user with OTP details
     user.otp = otp;
-    user.otpExpiry = otpExpiry;
-    user.lastOtpSent = Date.now();
+    user.otpExpires = otpExpiry;
+    user.lastOtpSent = new Date();
+
     await user.save();
 
     // Send OTP email
     const emailSubject = "Your OTP Code";
-    const emailHtml = generateOtpEmail(user.name, otp);
+    const emailHtml = generateOtpEmail(otp);
     await sendEmail(user.email, emailSubject, emailHtml);
 
     return res.status(200).json({
@@ -54,6 +53,7 @@ export const resendUserOtp = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error." });
   }
 };
+
 
 export const verifyUserOtp = async (req, res) => {
   try {
@@ -67,27 +67,26 @@ export const verifyUserOtp = async (req, res) => {
     }
 
     const user = await User.findById(userId);
-
     if (!user) {
       return res
         .status(404)
         .json({ success: false, message: "User not found." });
     }
 
-    // Check if OTP matches and is not expired
+    // Validate OTP
     if (user.otp !== otp) {
       return res.status(400).json({ success: false, message: "Invalid OTP." });
     }
 
-    if (user.otpExpiry < Date.now()) {
+    if (user.otpExpires < Date.now()) {
       return res
         .status(400)
         .json({ success: false, message: "OTP has expired." });
     }
 
-    // OTP is valid; clear the OTP and expiry
+    // Clear OTP details after verification
     user.otp = undefined;
-    user.otpExpiry = undefined;
+    user.otpExpires = undefined;
     await user.save();
 
     return res.status(200).json({
