@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
 import validator from "validator";
-import { User } from "../../models/userModels.js";
 import jwt from "jsonwebtoken";
+import { generateOtp, sendEmail } from "../../utils/generateOtp.js";
+import { User } from "../../models/userModels.js";
+import { generateOtpEmail } from "./../../utils/generateOtp.js";
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -14,46 +16,55 @@ export const userRegister = async (req, res) => {
     if (!email || !password || !confirmPassword) {
       return res
         .status(400)
-        .json({ success: false, message: "Please fill all fields" });
+        .json({ success: false, message: "Please fill all fields." });
     }
 
+    // Validate email
     if (!validator.isEmail(email)) {
       return res.status(400).json({
         success: false,
-        message: "pleaase provide a valid email address",
+        message: "Please provide a valid email address.",
       });
     }
 
+    // Check if passwords match
     if (password !== confirmPassword) {
       return res
         .status(400)
-        .json({ success: false, message: "Password does not match" });
+        .json({ success: false, message: "Passwords do not match." });
     }
 
+    // Check if user already exists
     const userExists = await User.findOne({ email });
-
     if (userExists) {
       return res
         .status(400)
-        .json({ success: false, message: "user already exists" });
+        .json({ success: false, message: "User already exists." });
     }
 
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Create a new user
     const newUser = new User({
       email,
       password: hashedPassword,
     });
 
+    // Generate OTP
+    const otp = generateOtp();
+    const otpExpiry = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
+    newUser.otp = otp;
+    newUser.otpExpiry = otpExpiry;
+
+    // Save the user to the database
     await newUser.save();
-    const user_id = newUser._id;
 
-    //tokens generated
-    const accessToken = generateAccessToken(user_id);
-    const refreshToken = generateRefreshToken(user_id);
+    // Generate tokens
+    const accessToken = generateAccessToken(newUser._id);
+    const refreshToken = generateRefreshToken(newUser._id);
 
-    //save to cookie
+    // Set cookies
     res.cookie("accessToken", accessToken, {
       sameSite: "None",
       secure: true,
@@ -66,12 +77,18 @@ export const userRegister = async (req, res) => {
       httpOnly: true,
     });
 
-    res
-      .status(201)
-      .json({ success: true, message: "User registered successfully" });
+    // Send OTP via email
+    const emailSubject = "Your OTP Code";
+    const emailHtml = generateOtpEmail(otp);
+    await sendEmail(newUser.email, emailSubject, emailHtml);
+
+    return res.status(201).json({
+      success: true,
+      message: "User registered successfully and OTP has been sent.",
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    console.error("Error in user registration:", error);
+    res.status(500).json({ success: false, message: "Internal server error." });
   }
 };
 
