@@ -28,7 +28,6 @@ const userSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: ["male", "female", "other"],
     },
     houseName: {
       type: String,
@@ -53,6 +52,14 @@ const userSchema = new mongoose.Schema(
     },
     lastOtpSent: {
       type: Date,
+    },
+    fillProfile: {
+      type: Boolean,
+      default: false,
+    },
+    otpVerification: {
+      type: Boolean,
+      default: false,
     },
   },
   {

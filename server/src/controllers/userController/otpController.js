@@ -64,27 +64,28 @@ export const verifyUserOtp = async (req, res) => {
         .json({ success: false, message: "OTP is required." });
     }
 
-    const user = await User.findById(userId);
-    if (!user) {
+    const userData = await User.findById(userId);
+    if (!userData) {
       return res
         .status(404)
         .json({ success: false, message: "User not found." });
     }
 
-    if (user.otp !== otp) {
+    if (userData.otp !== otp) {
       return res.status(400).json({ success: false, message: "Invalid OTP." });
     }
 
-    if (user.otpExpires < Date.now()) {
+    if (userData.otpExpires < Date.now()) {
       return res
         .status(400)
         .json({ success: false, message: "OTP has expired." });
     }
 
-    // Clear OTP details after verification
-    user.otp = undefined;
-    user.otpExpires = undefined;
-    await user.save();
+    userData.otpVerification = true;
+
+    userData.otp = undefined;
+    userData.otpExpires = undefined;
+    await userData.save();
 
     return res.status(200).json({
       success: true,

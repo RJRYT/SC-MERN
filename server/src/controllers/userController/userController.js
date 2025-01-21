@@ -55,7 +55,7 @@ export const userRegister = async (req, res) => {
 
     // Generate tokens
     const accessToken = generateAccessToken(newUser._id);
-    const refreshToken = generateRefreshToken(newUser._id);
+    // const refreshToken = generateRefreshToken(newUser._id);
 
     // Set cookies
     res.cookie("accessToken", accessToken, {
@@ -64,11 +64,11 @@ export const userRegister = async (req, res) => {
       httpOnly: true,
     });
 
-    res.cookie("refreshToken", refreshToken, {
-      sameSite: "None",
-      secure: true,
-      httpOnly: true,
-    });
+    // res.cookie("refreshToken", refreshToken, {
+    //   sameSite: "None",
+    //   secure: true,
+    //   httpOnly: true,
+    // });
 
     // Send OTP via email
     const emailSubject = "Your OTP Code";
@@ -107,6 +107,20 @@ export const userLogin = async (req, res) => {
       return res
         .status(400)
         .json({ success: false, message: "user not found" });
+    }
+
+    if (!userExist.fillProfile) {
+      return res.status(400).json({
+        success: false,
+        message: "You are not completed your Fill profile",
+      });
+    }
+
+    if (!userExist.otpVerification) {
+      return res.status(400).json({
+        success: false,
+        message: "You are not completed your  OTP verification",
+      });
     }
 
     const passwordMatch = bcrypt.compareSync(password, userExist.password);
@@ -227,14 +241,15 @@ export const fillUserProfile = async (req, res) => {
       "dateofBirth",
       "email",
       "mobile",
-      "genter",
+      "gender",
       "houseName",
-      "LandMark",
+      "landMark",
       "pincode",
-      "distict",
+      "district",
       "state",
     ];
-    //for missing fields
+
+    // Check for missing fields
     const missingFields = requiredFields.filter((field) => !req.body[field]);
     if (missingFields.length > 0) {
       return res.status(400).json({
@@ -249,7 +264,7 @@ export const fillUserProfile = async (req, res) => {
     if (!userData) {
       return res
         .status(404)
-        .json({ success: false, message: "User not found" });
+        .json({ success: false, message: "User not found." });
     }
 
     userData.fullName = req.body.fullName;
@@ -257,12 +272,14 @@ export const fillUserProfile = async (req, res) => {
     userData.dateofBirth = req.body.dateofBirth;
     userData.email = req.body.email;
     userData.mobile = req.body.mobile;
-    userData.gender = req.body.genter;
+    userData.gender = req.body.gender;
     userData.houseName = req.body.houseName;
-    userData.landMark = req.body.LandMark;
+    userData.landMark = req.body.landMark;
     userData.pincode = req.body.pincode;
-    userData.district = req.body.distict;
+    userData.district = req.body.district;
     userData.state = req.body.state;
+
+    userData.fillProfile = true;
 
     await userData.save();
 
