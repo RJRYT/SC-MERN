@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
 import validator from "validator";
-import { User } from "../../models/userModels.js";
 import jwt from "jsonwebtoken";
+import { generateOtp, sendEmail } from "../../utils/generateOtp.js";
+import { User } from "../../models/userModels.js";
+import { generateOtpEmail } from "./../../utils/generateOtp.js";
 import {
   generateAccessToken,
   generateRefreshToken,
@@ -14,64 +16,72 @@ export const userRegister = async (req, res) => {
     if (!email || !password || !confirmPassword) {
       return res
         .status(400)
-        .json({ success: false, message: "Please fill all fields" });
+        .json({ success: false, message: "Please fill all fields." });
     }
 
     if (!validator.isEmail(email)) {
       return res.status(400).json({
         success: false,
-        message: "pleaase provide a valid email address",
+        message: "Please provide a valid email address.",
       });
     }
 
     if (password !== confirmPassword) {
       return res
         .status(400)
-        .json({ success: false, message: "Password does not match" });
+        .json({ success: false, message: "Passwords do not match." });
     }
 
     const userExists = await User.findOne({ email });
-
     if (userExists) {
       return res
         .status(400)
-        .json({ success: false, message: "user already exists" });
+        .json({ success: false, message: "User already exists." });
     }
 
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
       email,
       password: hashedPassword,
     });
 
+    const otp = generateOtp();
+    const otpExpiry = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
+    newUser.otp = otp;
+    newUser.otpExpiry = otpExpiry;
+
     await newUser.save();
-    const user_id = newUser._id;
 
-    //tokens generated
-    const accessToken = generateAccessToken(user_id);
-    const refreshToken = generateRefreshToken(user_id);
+    // Generate tokens
+    const accessToken = generateAccessToken(newUser._id);
+    // const refreshToken = generateRefreshToken(newUser._id);
 
-    //save to cookie
+    // Set cookies
     res.cookie("accessToken", accessToken, {
       sameSite: "None",
       secure: true,
       httpOnly: true,
     });
 
-    res.cookie("refreshToken", refreshToken, {
-      sameSite: "None",
-      secure: true,
-      httpOnly: true,
-    });
+    // res.cookie("refreshToken", refreshToken, {
+    //   sameSite: "None",
+    //   secure: true,
+    //   httpOnly: true,
+    // });
 
-    res
-      .status(201)
-      .json({ success: true, message: "User registered successfully" });
+    // Send OTP via email
+    const emailSubject = "Your OTP Code";
+    const emailHtml = generateOtpEmail(otp);
+    await sendEmail(newUser.email, emailSubject, emailHtml);
+
+    return res.status(201).json({
+      success: true,
+      message: "User registered successfully and OTP has been sent.",
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    console.error("Error in user registration:", error);
+    res.status(500).json({ success: false, message: "Internal server error." });
   }
 };
 
@@ -91,7 +101,7 @@ export const userLogin = async (req, res) => {
       });
     }
 
-    const userExist = await User.findOne({ email });
+    const userExist = await User.findOne({ email }).select("-otp");
 
     if (!userExist) {
       return res
@@ -124,9 +134,13 @@ export const userLogin = async (req, res) => {
       httpOnly: true,
     });
 
-    return res
-      .status(200)
-      .json({ success: true, message: "User logged in successfully" });
+    userExist.password = null;
+
+    return res.status(200).json({
+      success: true,
+      message: "User logged in successfully",
+      user: userExist,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error" });
@@ -217,14 +231,15 @@ export const fillUserProfile = async (req, res) => {
       "dateofBirth",
       "email",
       "mobile",
-      "genter",
+      "gender",
       "houseName",
-      "LandMark",
+      "landMark",
       "pincode",
-      "distict",
+      "district",
       "state",
     ];
-    //for missing fields
+
+    // Check for missing fields
     const missingFields = requiredFields.filter((field) => !req.body[field]);
     if (missingFields.length > 0) {
       return res.status(400).json({
@@ -239,7 +254,7 @@ export const fillUserProfile = async (req, res) => {
     if (!userData) {
       return res
         .status(404)
-        .json({ success: false, message: "User not found" });
+        .json({ success: false, message: "User not found." });
     }
 
     userData.fullName = req.body.fullName;
@@ -247,12 +262,14 @@ export const fillUserProfile = async (req, res) => {
     userData.dateofBirth = req.body.dateofBirth;
     userData.email = req.body.email;
     userData.mobile = req.body.mobile;
-    userData.gender = req.body.genter;
+    userData.gender = req.body.gender;
     userData.houseName = req.body.houseName;
-    userData.landMark = req.body.LandMark;
+    userData.landMark = req.body.landMark;
     userData.pincode = req.body.pincode;
-    userData.district = req.body.distict;
+    userData.district = req.body.district;
     userData.state = req.body.state;
+
+    userData.fillProfile = true;
 
     await userData.save();
 

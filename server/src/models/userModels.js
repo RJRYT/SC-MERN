@@ -16,44 +16,50 @@ const userSchema = new mongoose.Schema(
     },
     fullName: {
       type: String,
-      required: false,
     },
     address: {
       type: String,
-      required: false,
     },
-    dateofBirth: {
+    dateOfBirth: {
       type: String,
-      required: false,
     },
     mobile: {
       type: String,
-      required: false,
     },
     gender: {
       type: String,
-      enum: ["male", "female", "other"],
-      required: false,
     },
     houseName: {
       type: String,
-      required: false,
     },
     landMark: {
       type: String,
-      required: false,
     },
     pincode: {
       type: String,
-      required: false,
     },
     district: {
       type: String,
-      required: false,
     },
     state: {
       type: String,
-      required: false,
+    },
+    otp: {
+      type: String,
+    },
+    otpExpires: {
+      type: Date,
+    },
+    lastOtpSent: {
+      type: Date,
+    },
+    fillProfile: {
+      type: Boolean,
+      default: false,
+    },
+    otpVerification: {
+      type: Boolean,
+      default: false,
     },
   },
   {
