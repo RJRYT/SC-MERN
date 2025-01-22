@@ -101,26 +101,12 @@ export const userLogin = async (req, res) => {
       });
     }
 
-    const userExist = await User.findOne({ email });
+    const userExist = await User.findOne({ email }).select("-otp");
 
     if (!userExist) {
       return res
         .status(400)
         .json({ success: false, message: "user not found" });
-    }
-
-    if (!userExist.fillProfile) {
-      return res.status(400).json({
-        success: false,
-        message: "You are not completed your Fill profile",
-      });
-    }
-
-    if (!userExist.otpVerification) {
-      return res.status(400).json({
-        success: false,
-        message: "You are not completed your  OTP verification",
-      });
     }
 
     const passwordMatch = bcrypt.compareSync(password, userExist.password);
@@ -148,9 +134,13 @@ export const userLogin = async (req, res) => {
       httpOnly: true,
     });
 
-    return res
-      .status(200)
-      .json({ success: true, message: "User logged in successfully" });
+    userExist.password = null;
+
+    return res.status(200).json({
+      success: true,
+      message: "User logged in successfully",
+      user: userExist,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error" });
