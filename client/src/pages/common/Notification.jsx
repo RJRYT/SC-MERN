@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "../../components/root/Navbar";
 import { Switch } from "@material-tailwind/react";
+import Header from "../../components/header/Header";
 
 function Notification() {
   return (
     <div className="text-lg md:text-xl lg:text-2xl mx-auto">
-      <Navbar />
+  <Header title="NOTIFICATION SETTINGS"/>
 
       {/* Notification Rows */}
       <div className="space-y-4 mt-10  md:space-y-3 lg:space-y-2 ml-4 md:ml-16 lg:ml-80 mr-4 md:mr-16 lg:mr-80">
